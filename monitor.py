@@ -37,7 +37,7 @@ _fred, _yahoo = {}, {}
 def fred(series):
     """Last value and date from FRED's public CSV (no API key needed)."""
     if series not in _fred:
-        r = requests.get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}', headers=UA, timeout=30)
+        r = requests.get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}', headers=UA, timeout=20)
         r.raise_for_status()
         rows = [row for row in csv.reader(io.StringIO(r.text))][1:]
         rows = [(d, float(v)) for d, v in rows if v not in ('.', '')]
@@ -123,12 +123,38 @@ def run():
     prev_ind = {r['id']: r for r in prev.get('indicators', [])}
     now = dt.datetime.now(ET)
 
+    # warm the caches in parallel (FRED and Yahoo), so one slow source can't stall the run
+    from concurrent.futures import ThreadPoolExecutor
+    jobs = set()
+    for ind in cfg['indicators']:
+        s = ind['source']
+        if s['type'] == 'fred': jobs.add(('fred', s['id']))
+        for k in ('sym', 'a', 'b'):
+            if k in s and s['type'] != 'fred': jobs.add(('yahoo', s[k]))
+    def warm(j):
+        try:
+            (fred if j[0] == 'fred' else yahoo)(j[1]); return j, None
+        except Exception as e:
+            return j, str(e)[:120]
+    errors = {}
+    if not OFFLINE:
+        with ThreadPoolExecutor(max_workers=12) as ex:
+            for j, err in ex.map(warm, sorted(jobs)):
+                if err: errors[f'{j[0]}:{j[1]}'] = err
+    for k, v in errors.items():
+        print('fetch failed', k, v, flush=True)
+
     rows = []
     for ind in cfg['indicators']:
         stale = False
         try:
-            if OFFLINE and ind['source']['type'] not in ('manual',):
+            src_t = ind['source']
+            if OFFLINE and src_t['type'] not in ('manual',):
                 raise RuntimeError('offline')
+            if src_t['type'] == 'fred' and f"fred:{src_t['id']}" in errors:
+                raise RuntimeError('fetch failed')
+            if any(f'yahoo:{src_t[k]}' in errors for k in ('sym', 'a', 'b') if k in src_t):
+                raise RuntimeError('fetch failed')
             v, src = measure(ind['source'], manual)
         except Exception as e:
             p = prev_ind.get(ind['id'])
@@ -153,7 +179,7 @@ def run():
         dict(name='Bear market (-20%) within 6 months', score=round(0.5 * pmap['trend'] + 0.5 * pmap['credit'])),
         dict(name='Recession within 12 months', score=round(0.6 * pmap['macro'] + 0.4 * pmap['credit'])),
     ]
-    latest = dict(updated=now.strftime('%Y-%m-%d %H:%M ET'), updated_iso=now.isoformat(), gauge=gauge,
+    latest = dict(fetch_errors=errors, updated=now.strftime('%Y-%m-%d %H:%M ET'), updated_iso=now.isoformat(), gauge=gauge,
                   zone=zone(gauge, cfg), contrarian=contrarian, pillars=pillars, horizon=horizon, indicators=rows)
 
     # history: one point per run for 3 days, then one per day (the day's last reading)
