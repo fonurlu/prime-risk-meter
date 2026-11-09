@@ -34,15 +34,35 @@ def save(path, obj):
 _fred, _yahoo = {}, {}
 
 
+FRED_CACHE = os.path.join(DATA, 'fred_cache.json')
+_fred_cache = None
+
+
 def fred(series):
-    """Last value and date from FRED's public CSV (no API key needed)."""
-    if series not in _fred:
-        r = requests.get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}', headers=UA, timeout=20)
+    """Last value and date for a FRED series. Uses the free FRED API key (GitHub secret FRED_API_KEY)
+    when present, else FRED's public CSV. Economic data changes daily at most, so each series is
+    re-fetched only when the cached copy is older than 4 hours."""
+    global _fred_cache
+    if _fred_cache is None:
+        _fred_cache = load(FRED_CACHE, {})
+    c = _fred_cache.get(series)
+    now = dt.datetime.now(dt.timezone.utc)
+    if c and (now - dt.datetime.fromisoformat(c['fetched'])).total_seconds() < 4 * 3600:
+        return c['value'], c['date']
+    key = os.environ.get('FRED_API_KEY')
+    if key:
+        r = requests.get('https://api.stlouisfed.org/fred/series/observations', timeout=25, headers=UA,
+                         params={'series_id': series, 'api_key': key, 'file_type': 'json', 'sort_order': 'desc', 'limit': 10})
+        r.raise_for_status()
+        obs = [o for o in r.json()['observations'] if o['value'] not in ('.', '')]
+        d, v = obs[0]['date'], float(obs[0]['value'])
+    else:
+        r = requests.get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}', headers=UA, timeout=25)
         r.raise_for_status()
         rows = [row for row in csv.reader(io.StringIO(r.text))][1:]
-        rows = [(d, float(v)) for d, v in rows if v not in ('.', '')]
-        _fred[series] = rows[-1]
-    d, v = _fred[series]
+        d, v = [(a, float(b)) for a, b in rows if b not in ('.', '')][-1]
+    _fred_cache[series] = {'value': v, 'date': d, 'fetched': now.isoformat()}
+    save(FRED_CACHE, _fred_cache)
     return v, d
 
 
@@ -138,7 +158,7 @@ def run():
             return j, str(e)[:120]
     errors = {}
     if not OFFLINE:
-        with ThreadPoolExecutor(max_workers=12) as ex:
+        with ThreadPoolExecutor(max_workers=6) as ex:
             for j, err in ex.map(warm, sorted(jobs)):
                 if err: errors[f'{j[0]}:{j[1]}'] = err
     for k, v in errors.items():

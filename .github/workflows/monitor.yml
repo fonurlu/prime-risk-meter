@@ -22,6 +22,7 @@ jobs:
       - run: python monitor.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       - name: Save readings
         run: |
           git config user.name "prime-risk-meter"
