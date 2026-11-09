@@ -1,0 +1,404 @@
+{
+ "pillars": {
+  "macro": {
+   "name": "Macro / recession",
+   "weight": 30
+  },
+  "credit": {
+   "name": "Credit & liquidity",
+   "weight": 25
+  },
+  "trend": {
+   "name": "Market trend & breadth",
+   "weight": 25
+  },
+  "sent": {
+   "name": "Volatility & sentiment",
+   "weight": 20
+  }
+ },
+ "zones": [
+  [
+   0,
+   30,
+   "Green"
+  ],
+  [
+   30,
+   50,
+   "Yellow"
+  ],
+  [
+   50,
+   70,
+   "Orange"
+  ],
+  [
+   70,
+   101,
+   "Red"
+  ]
+ ],
+ "alerts": {
+  "indicator_score": 70,
+  "jump_points": 10,
+  "quiet_start_hour_et": 22,
+  "quiet_end_hour_et": 7,
+  "market_lines": [
+   {
+    "id": "i22",
+    "op": ">",
+    "value": 30,
+    "label": "VIX above 30"
+   },
+   {
+    "id": "i15",
+    "op": "<",
+    "value": 0,
+    "label": "S&P 500 below its 200-day"
+   },
+   {
+    "id": "i09",
+    "op": ">",
+    "value": 4.5,
+    "label": "High-yield spread above 4.5%"
+   },
+   {
+    "id": "i23",
+    "op": ">",
+    "value": 1.0,
+    "label": "VIX above 3-month VIX (panic)"
+   },
+   {
+    "id": "i17",
+    "op": "<",
+    "value": -15,
+    "label": "Nasdaq 15% below its high"
+   }
+  ]
+ },
+ "indicators": [
+  {
+   "id": "i01",
+   "pillar": "macro",
+   "name": "Yield curve 10y-3m (%)",
+   "benign": 1.5,
+   "danger": -0.5,
+   "source": {
+    "type": "fred",
+    "id": "T10Y3M"
+   },
+   "why": "Inversion = recession in 6-18 months; un-inverting after an inversion is the late warning"
+  },
+  {
+   "id": "i02",
+   "pillar": "macro",
+   "name": "Sahm rule (unemployment trigger)",
+   "benign": 0.0,
+   "danger": 0.5,
+   "source": {
+    "type": "fred",
+    "id": "SAHMREALTIME"
+   },
+   "why": "0.5 = a recession has started"
+  },
+  {
+   "id": "i03",
+   "pillar": "macro",
+   "name": "Initial jobless claims",
+   "benign": 200000,
+   "danger": 300000,
+   "source": {
+    "type": "fred",
+    "id": "ICSA"
+   },
+   "why": "Layoffs rising = economy cracking"
+  },
+  {
+   "id": "i04",
+   "pillar": "macro",
+   "name": "ISM manufacturing PMI",
+   "benign": 55,
+   "danger": 45,
+   "source": {
+    "type": "manual",
+    "key": "ism_pmi"
+   },
+   "why": "Below 48 = factory recession"
+  },
+  {
+   "id": "i05",
+   "pillar": "macro",
+   "name": "Building permits (k, annual rate)",
+   "benign": 1500,
+   "danger": 1200,
+   "source": {
+    "type": "fred",
+    "id": "PERMIT"
+   },
+   "why": "Housing leads the cycle"
+  },
+  {
+   "id": "i06",
+   "pillar": "macro",
+   "name": "Chicago Fed activity index (3m avg)",
+   "benign": 0.2,
+   "danger": -0.7,
+   "source": {
+    "type": "fred",
+    "id": "CFNAIMA3"
+   },
+   "why": "Below -0.7 = recession"
+  },
+  {
+   "id": "i07",
+   "pillar": "macro",
+   "name": "Consumer sentiment (U. Michigan)",
+   "benign": 85,
+   "danger": 55,
+   "source": {
+    "type": "fred",
+    "id": "UMCSENT"
+   },
+   "why": "Low = consumers pulling back"
+  },
+  {
+   "id": "i08",
+   "pillar": "macro",
+   "name": "GDPNow, current quarter (%)",
+   "benign": 2.5,
+   "danger": 0.0,
+   "source": {
+    "type": "fred",
+    "id": "GDPNOW"
+   },
+   "why": "Atlanta Fed real-time GDP estimate"
+  },
+  {
+   "id": "i09",
+   "pillar": "credit",
+   "name": "High-yield credit spread (%)",
+   "benign": 3.0,
+   "danger": 6.0,
+   "source": {
+    "type": "fred",
+    "id": "BAMLH0A0HYM2"
+   },
+   "why": "Credit stress usually leads equity bear markets"
+  },
+  {
+   "id": "i10",
+   "pillar": "credit",
+   "name": "Junk vs Treasuries, 3-month change (%)",
+   "benign": 1.0,
+   "danger": -5.0,
+   "source": {
+    "type": "ratio_chg",
+    "a": "HYG",
+    "b": "IEF",
+    "days": 63
+   },
+   "why": "Junk bonds lagging Treasuries = risk-off"
+  },
+  {
+   "id": "i11",
+   "pillar": "credit",
+   "name": "Investment-grade spread (%)",
+   "benign": 0.8,
+   "danger": 2.0,
+   "source": {
+    "type": "fred",
+    "id": "BAMLC0A0CM"
+   },
+   "why": "Corporate funding stress"
+  },
+  {
+   "id": "i12",
+   "pillar": "credit",
+   "name": "Chicago Fed financial conditions (NFCI)",
+   "benign": -0.6,
+   "danger": 0.3,
+   "source": {
+    "type": "fred",
+    "id": "NFCI"
+   },
+   "why": "Above 0 = tighter than average"
+  },
+  {
+   "id": "i13",
+   "pillar": "credit",
+   "name": "MOVE bond volatility",
+   "benign": 80,
+   "danger": 140,
+   "source": {
+    "type": "last",
+    "sym": "^MOVE"
+   },
+   "why": "Bond-market fear"
+  },
+  {
+   "id": "i14",
+   "pillar": "credit",
+   "name": "Banks tightening loan standards (net %)",
+   "benign": -10,
+   "danger": 40,
+   "source": {
+    "type": "fred",
+    "id": "DRTSCILM"
+   },
+   "why": "Above 40 = credit crunch"
+  },
+  {
+   "id": "i15",
+   "pillar": "trend",
+   "name": "S&P 500 vs 200-day average (%)",
+   "benign": 8,
+   "danger": -8,
+   "source": {
+    "type": "vs_ma",
+    "sym": "^GSPC",
+    "n": 200
+   },
+   "why": "Below the 200-day = bear trend"
+  },
+  {
+   "id": "i16",
+   "pillar": "trend",
+   "name": "S&P 500 drawdown from 1-yr high (%)",
+   "benign": 0,
+   "danger": -20,
+   "source": {
+    "type": "drawdown",
+    "sym": "^GSPC"
+   },
+   "why": "-10 = correction, -20 = bear market"
+  },
+  {
+   "id": "i17",
+   "pillar": "trend",
+   "name": "Nasdaq drawdown from 1-yr high (%)",
+   "benign": 0,
+   "danger": -20,
+   "source": {
+    "type": "drawdown",
+    "sym": "^IXIC"
+   },
+   "why": "Health of the AI/tech leaders"
+  },
+  {
+   "id": "i18",
+   "pillar": "trend",
+   "name": "Equal-weight vs cap-weight S&P, 3m (%)",
+   "benign": 2,
+   "danger": -5,
+   "source": {
+    "type": "ratio_chg",
+    "a": "RSP",
+    "b": "SPY",
+    "days": 63
+   },
+   "why": "A narrow market is fragile"
+  },
+  {
+   "id": "i19",
+   "pillar": "trend",
+   "name": "Equal-weight S&P vs 200-day (%)",
+   "benign": 8,
+   "danger": -8,
+   "source": {
+    "type": "vs_ma",
+    "sym": "RSP",
+    "n": 200
+   },
+   "why": "Breadth of the market"
+  },
+  {
+   "id": "i20",
+   "pillar": "trend",
+   "name": "Copper/gold ratio, 6-month change (%)",
+   "benign": 5,
+   "danger": -15,
+   "source": {
+    "type": "ratio_chg",
+    "a": "HG=F",
+    "b": "GC=F",
+    "days": 126
+   },
+   "why": "Falling = growth scare"
+  },
+  {
+   "id": "i21",
+   "pillar": "trend",
+   "name": "TSX vs 200-day average (%)",
+   "benign": 8,
+   "danger": -8,
+   "source": {
+    "type": "vs_ma",
+    "sym": "^GSPTSE",
+    "n": 200
+   },
+   "why": "Canadian market trend"
+  },
+  {
+   "id": "i22",
+   "pillar": "sent",
+   "name": "VIX",
+   "benign": 14,
+   "danger": 35,
+   "source": {
+    "type": "last",
+    "sym": "^VIX"
+   },
+   "why": "Wall Street fear gauge"
+  },
+  {
+   "id": "i23",
+   "pillar": "sent",
+   "name": "VIX / 3-month VIX",
+   "benign": 0.85,
+   "danger": 1.1,
+   "source": {
+    "type": "ratio_last",
+    "a": "^VIX",
+    "b": "^VIX3M"
+   },
+   "why": "Above 1 = panic right now"
+  },
+  {
+   "id": "i24",
+   "pillar": "sent",
+   "name": "AAII bulls minus bears (pts)",
+   "benign": 10,
+   "danger": -30,
+   "source": {
+    "type": "manual",
+    "key": "aaii_spread"
+   },
+   "why": "Retail investor mood (weekly)"
+  },
+  {
+   "id": "i25",
+   "pillar": "sent",
+   "name": "CNN Fear & Greed (0-100)",
+   "benign": 75,
+   "danger": 5,
+   "source": {
+    "type": "cnn_fg",
+    "key": "cnn_fg"
+   },
+   "why": "Below 25 = extreme fear"
+  },
+  {
+   "id": "i26",
+   "pillar": "sent",
+   "name": "ValueTrend Bear-o-meter (0-8)",
+   "benign": 8,
+   "danger": 0,
+   "source": {
+    "type": "manual",
+    "key": "bear_o_meter"
+   },
+   "why": "Keith Richards, monthly; 0 = highest risk"
+  }
+ ]
+}

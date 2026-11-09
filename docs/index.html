@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRIME Risk Meter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column instrument panel - dial + pillars on top, horizon + zones, history, full indicator table */
+:root {
+  --bg: #f6f7f5; --panel: #ffffff; --fg: #17201c; --muted: #5d6a63; --line: #dde3df;
+  --ok: #2f9e5e; --warn: #d9a400; --hot: #e07b24; --bad: #cf3f3f; --accent: #1f5f4a;
+  --serif: "IBM Plex Serif", Georgia, serif; --sans: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111614; --panel: #18201c; --fg: #e8eee9; --muted: #9aa8a0; --line: #2a3530; --accent: #6fc3a2; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans); }
+.wrap { max-width: 1100px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); display: flex; flex-direction: column; gap: 20px; }
+h1 { font: 500 30px/1.15 var(--serif); margin: 0; letter-spacing: -.01em; }
+h2 { font: 600 13px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; }
+.muted { color: var(--muted); font-size: 13px; }
+.top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 760px) { .top { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px; min-width: 0; position: relative; }
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.btn { font: 500 13px var(--sans); border: 1px solid var(--line); background: var(--panel); color: var(--fg); padding: 8px 12px; border-radius: 8px; cursor: pointer; text-decoration: none; }
+.btn:hover { border-color: var(--accent); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.reading { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.big { font: 400 64px/1 var(--serif); font-variant-numeric: tabular-nums; }
+.pill { font: 600 12px var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; color: #fff; }
+.flag { margin-top: 12px; padding: 10px 12px; border-radius: 8px; border: 1px dashed var(--line); font-size: 14px; }
+.flag.on { border-color: var(--ok); }
+svg text { fill: var(--muted); font: 11px var(--mono); }
+.bar { display: grid; grid-template-columns: minmax(120px, 40%) 1fr 36px; gap: 10px; align-items: center; padding: 7px 0; font-size: 14px; }
+.track { height: 12px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.fill { height: 100%; border-radius: 6px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; font: 600 11px var(--sans); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.n { font-family: var(--mono); text-align: right; white-space: nowrap; }
+.chip { display: inline-block; min-width: 38px; text-align: center; border-radius: 4px; padding: 1px 6px; font: 600 12px var(--mono); color: #111; }
+.stale { color: var(--hot); font-size: 11px; }
+.scroll { overflow-x: auto; }
+.zones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; font-size: 13px; }
+@media (max-width: 760px) { .zones { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.zone { border-top: 4px solid; padding-top: 6px; }
+.zone b { display: block; font-size: 14px; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font: 12px var(--mono); box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+.err { color: var(--bad); }
+details summary { cursor: pointer; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div>
+      <h1>PRIME Risk Meter</h1>
+      <div class="muted" id="lede">Loading the latest reading…</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="reload" type="button">Reload</button>
+      <a class="btn" id="runnow" href="#" target="_blank" rel="noopener">Run a fresh check</a>
+    </div>
+  </header>
+
+  <section class="top">
+    <div class="card">
+      <h2>Gauge (0 calm · 100 crisis)</h2>
+      <div class="reading"><span class="big" id="gauge">–</span><span class="pill" id="zone">–</span></div>
+      <div id="dial"></div>
+      <div class="flag" id="flag">–</div>
+    </div>
+    <div class="card">
+      <h2>Four pillars</h2>
+      <div id="bars"></div>
+      <h2 style="margin-top:18px">Risk by horizon</h2>
+      <table><tbody id="horizon"></tbody></table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>What each zone means</h2>
+    <div class="zones">
+      <div class="zone" style="border-color:var(--ok)"><b>0–30 Green</b>Healthy bull market. Follow the plan.</div>
+      <div class="zone" style="border-color:var(--warn)"><b>30–50 Yellow</b>Correction risk (−10%). No speculative buys; limit orders on quality only.</div>
+      <div class="zone" style="border-color:var(--hot)"><b>50–70 Orange</b>Bear-market risk (−20%). Raise cash to 10–15%.</div>
+      <div class="zone" style="border-color:var(--bad)"><b>70–100 Red</b>Recession or crisis. Defensive stocks, gold, cash.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Gauge over time</h2>
+    <div id="hist" style="position:relative"></div>
+  </section>
+
+  <section class="card">
+    <h2>All indicators</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Pillar</th><th>Indicator</th><th>Now</th><th>Calm at</th><th>Danger at</th><th>Score</th><th>Source</th></tr></thead>
+      <tbody id="ind"></tbody>
+    </table></div>
+  </section>
+
+  <details class="card">
+    <summary>How the score works</summary>
+    <p>Each indicator has a calm level (score 0) and a danger level (score 100); today's value is placed on that line and capped. Indicators are averaged within their pillar, and the pillars are weighted 30 / 25 / 25 / 20 into one number. The contrarian flag lights when sentiment is fearful (50+) while recession and credit signals stay calm (under 30): historically a correction rather than a recession. Markets data refresh every 15 minutes; economic data daily to monthly. Not investment advice.</p>
+  </details>
+  <div class="muted">Data: FRED (St. Louis Fed), Yahoo Finance, CNN Fear &amp; Greed, AAII, ISM, ValueTrend.</div>
+</div>
+
+<script>
+const COLORS = { Green: 'var(--ok)', Yellow: 'var(--warn)', Orange: 'var(--hot)', Red: 'var(--bad)' };
+const scoreColor = (s) => s < 30 ? '#55b67d' : s < 50 ? '#e6c440' : s < 70 ? '#ec9a4f' : '#e06666';
+const $ = (id) => document.getElementById(id);
+const el = (tag, props = {}, kids = []) => { const e = document.createElement(tag); Object.assign(e, props); kids.forEach((k) => e.append(k)); return e; };
+const NS = 'http://www.w3.org/2000/svg';
+const sv = (tag, attrs = {}) => { const e = document.createElementNS(NS, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); return e; };
+const fmt = (v) => Math.abs(v) >= 1000 ? Math.round(v).toLocaleString('en-US') : (+v).toLocaleString('en-US', { maximumFractionDigits: 2 });
+
+// "Run a fresh check" opens the GitHub Actions page (owner signs in and presses "Run workflow")
+const parts = location.hostname.split('.');
+const owner = parts[0], repo = location.pathname.split('/').filter(Boolean)[0] || 'prime-risk-meter';
+$('runnow').href = `https://github.com/${owner}/${repo}/actions/workflows/monitor.yml`;
+
+function dial(g) {
+  const box = $('dial'); box.replaceChildren();
+  const w = Math.max(260, box.clientWidth), h = Math.min(190, w * .55), r = Math.min(w / 2 - 30, h - 30), cx = w / 2, cy = h - 6;
+  const svg = sv('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%', role: 'img', 'aria-label': `Gauge at ${g} of 100` });
+  const ang = (v) => Math.PI * (1 - v / 100);
+  const arc = (a, b, c) => {
+    const p = (v, rr) => [cx + rr * Math.cos(ang(v)), cy - rr * Math.sin(ang(v))];
+    const [x1, y1] = p(a, r), [x2, y2] = p(b, r), [x3, y3] = p(b, r * .68), [x4, y4] = p(a, r * .68);
+    svg.append(sv('path', { d: `M${x1},${y1} A${r},${r} 0 0 1 ${x2},${y2} L${x3},${y3} A${r * .68},${r * .68} 0 0 0 ${x4},${y4} Z`, fill: c }));
+  };
+  arc(0, 30, '#55b67d'); arc(30, 50, '#e6c440'); arc(50, 70, '#ec9a4f'); arc(70, 100, '#e06666');
+  [0, 30, 50, 70, 100].forEach((t) => { const t2 = sv('text', { x: cx + (r + 14) * Math.cos(ang(t)), y: cy - (r + 14) * Math.sin(ang(t)) + 4, 'text-anchor': 'middle' }); t2.textContent = t; svg.append(t2); });
+  svg.append(sv('line', { x1: cx, y1: cy, x2: cx + r * .9 * Math.cos(ang(g)), y2: cy - r * .9 * Math.sin(ang(g)), stroke: 'currentColor', 'stroke-width': 4, 'stroke-linecap': 'round' }));
+  svg.append(sv('circle', { cx, cy, r: 7, fill: 'currentColor' }));
+  box.append(svg);
+}
+
+function history(h) {
+  const box = $('hist'); box.replaceChildren();
+  if (!h.length) { box.append(el('div', { className: 'muted', textContent: 'History builds up with each check.' })); return; }
+  const pts = h.map((x) => ({ t: new Date(x.t.replace(' ', 'T')), g: x.g, raw: x.t }));
+  const w = Math.max(280, box.clientWidth), H = 200, m = { l: 34, r: 12, t: 8, b: 24 };
+  let t0 = +pts[0].t, t1 = +pts[pts.length - 1].t; if (t0 === t1) { t0 -= 864e5; t1 += 864e5; }
+  const x = (t) => m.l + (t - t0) / (t1 - t0) * (w - m.l - m.r), y = (g) => m.t + (100 - g) / 100 * (H - m.t - m.b);
+  const svg = sv('svg', { viewBox: `0 0 ${w} ${H}`, width: '100%', role: 'img', 'aria-label': 'Gauge readings over time' });
+  [[0, 30, '#55b67d'], [30, 50, '#e6c440'], [50, 70, '#ec9a4f'], [70, 100, '#e06666']].forEach(([a, b, c]) => svg.append(sv('rect', { x: m.l, y: y(b), width: w - m.l - m.r, height: y(a) - y(b), fill: c, opacity: .14 })));
+  [0, 30, 50, 70, 100].forEach((v) => { const t = sv('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }); t.textContent = v; svg.append(t); });
+  const fmtD = (d) => d.toLocaleDateString('en-CA', { month: 'short', day: 'numeric' });
+  [t0, (t0 + t1) / 2, t1].forEach((t, i) => { const tx = sv('text', { x: x(t), y: H - 6, 'text-anchor': ['start', 'middle', 'end'][i] }); tx.textContent = fmtD(new Date(t)); svg.append(tx); });
+  svg.append(sv('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + x(+p.t) + ',' + y(p.g)).join(''), fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2 }));
+  const tip = el('div', { className: 'tip', hidden: true });
+  pts.forEach((p) => {
+    const c = sv('circle', { cx: x(+p.t), cy: y(p.g), r: pts.length > 60 ? 2.5 : 4, fill: 'var(--accent)' });
+    c.addEventListener('pointerenter', () => { tip.hidden = false; tip.textContent = `${p.raw} ET · ${p.g}`; tip.style.left = Math.min(x(+p.t) + 8, w - 170) + 'px'; tip.style.top = (y(p.g) - 10) + 'px'; });
+    c.addEventListener('pointerleave', () => { tip.hidden = true; });
+    svg.append(c);
+  });
+  box.append(svg, tip);
+}
+
+async function load() {
+  try {
+    const bust = '?t=' + Date.now();
+    const [d, h] = await Promise.all([fetch('data/latest.json' + bust).then((r) => r.json()), fetch('data/history.json' + bust).then((r) => r.json()).catch(() => [])]);
+    const top = d.pillars.slice().sort((a, b) => b.score - a.score)[0];
+    const next = d.gauge < 30 ? 30 : d.gauge < 50 ? 50 : d.gauge < 70 ? 70 : null;
+    const ageMin = Math.round((Date.now() - new Date(d.updated_iso)) / 60000);
+    $('lede').textContent = `Reading ${d.gauge} (${d.zone}${next ? `, ${next - d.gauge} points below the next zone` : ''}). Most stressed: ${top.name.toLowerCase()} at ${Math.round(top.score)}. Updated ${d.updated} (${ageMin} min ago).`;
+    $('gauge').textContent = d.gauge;
+    $('zone').textContent = d.zone + ' zone'; $('zone').style.background = COLORS[d.zone];
+    $('flag').textContent = d.contrarian
+      ? 'Contrarian flag ON: fear is high while recession and credit signals are calm. Historically a correction, not a recession, and a buying window for quality names at limit prices.'
+      : 'Contrarian flag off: sentiment and fundamentals agree.';
+    $('flag').className = 'flag' + (d.contrarian ? ' on' : '');
+    dial(d.gauge);
+    $('bars').replaceChildren(...d.pillars.map((p) => el('div', { className: 'bar' }, [
+      el('div', { textContent: `${p.name} (${p.weight}%)` }),
+      el('div', { className: 'track' }, [Object.assign(el('div', { className: 'fill' }), { style: `width:${Math.max(2, p.score)}%;background:${scoreColor(p.score)}` })]),
+      el('div', { className: 'num', textContent: Math.round(p.score) })])));
+    const lvl = (s) => s < 30 ? ['Low', '#55b67d'] : s < 50 ? ['Medium', '#e6c440'] : s < 70 ? ['High', '#ec9a4f'] : ['Very high', '#e06666'];
+    $('horizon').replaceChildren(...d.horizon.map((x) => { const [l, c] = lvl(x.score); return el('tr', {}, [el('td', { textContent: x.name }), el('td', {}, [Object.assign(el('span', { className: 'chip', textContent: l }), { style: `background:${c}` })]), el('td', { className: 'n', textContent: x.score + '/100' })]); }));
+    const pname = Object.fromEntries(d.pillars.map((p) => [p.key, p.name.split(' ')[0]]));
+    $('ind').replaceChildren(...d.indicators.map((r) => el('tr', { title: r.why }, [
+      el('td', { textContent: pname[r.pillar] }), el('td', { textContent: r.name }),
+      el('td', { className: 'n', textContent: fmt(r.value) }), el('td', { className: 'n', textContent: fmt(r.benign) }), el('td', { className: 'n', textContent: fmt(r.danger) }),
+      el('td', {}, [Object.assign(el('span', { className: 'chip', textContent: Math.round(r.score) }), { style: `background:${scoreColor(r.score)}` })]),
+      el('td', { className: 'muted' }, [r.source.replace(' (stale)', ''), ...(r.stale ? [el('span', { className: 'stale', textContent: ' · stale' })] : [])])])));
+    history(h);
+  } catch (e) {
+    $('lede').replaceChildren(el('span', { className: 'err', textContent: 'Could not load the latest reading. Try Reload in a minute.' }));
+  }
+}
+$('reload').addEventListener('click', load);
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(load, 250); });
+load(); setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>

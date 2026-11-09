@@ -1,0 +1,32 @@
+name: PRIME risk meter
+on:
+  schedule:
+    - cron: '*/15 * * * *'     # every 15 minutes (GitHub may delay a few minutes)
+  workflow_dispatch:            # the "Run workflow" button = run now
+permissions:
+  contents: write               # save the new readings for the web page
+  issues: write                 # open an alert issue -> GitHub emails you
+concurrency:
+  group: risk-meter
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - run: python monitor.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Save readings
+        run: |
+          git config user.name "prime-risk-meter"
+          git config user.email "prime-risk-meter@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "Risk reading $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase -X ours || true
+          git push

@@ -1,0 +1,19 @@
+{
+ "_note": "Values with no free automatic feed. Edit here (or ask Claude). Each has the date it was read.",
+ "ism_pmi": {
+  "value": 55.5,
+  "asof": "2026-10 (released 2 Nov)"
+ },
+ "aaii_spread": {
+  "value": -14.3,
+  "asof": "week ending 4 Nov 2026"
+ },
+ "cnn_fg": {
+  "value": 22,
+  "asof": "9 Nov 2026 (est., extreme fear)"
+ },
+ "bear_o_meter": {
+  "value": 5,
+  "asof": "2 Nov 2026"
+ }
+}
