@@ -128,7 +128,7 @@ const fmt = (v) => Math.abs(v) >= 1000 ? Math.round(v).toLocaleString('en-US') :
 
 // "Run a fresh check" opens the GitHub Actions page (owner signs in and presses "Run workflow")
 const parts = location.hostname.split('.');
-const owner = parts[0], repo = location.pathname.split('/').filter(Boolean)[0] || 'prime-risk-meter';
+const owner = parts.length > 2 ? parts[0] : 'fonurlu', repo = location.pathname.split('/').filter(Boolean)[0] || 'prime-risk-meter';
 $('runnow').href = `https://github.com/${owner}/${repo}/actions/workflows/monitor.yml`;
 
 function dial(g) {
@@ -173,8 +173,12 @@ function history(h) {
 
 async function load() {
   try {
-    const bust = '?t=' + Date.now();
-    const [d, h] = await Promise.all([fetch('data/latest.json' + bust).then((r) => r.json()), fetch('data/history.json' + bust).then((r) => r.json()).catch(() => [])]);
+    // Read the newest readings straight from the GitHub repository (always current), falling back to the published copy.
+    const api = (f) => fetch(`https://api.github.com/repos/${owner}/${repo}/contents/docs/data/${f}?ref=main&t=${Date.now()}`, { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' })
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+    const local = (f) => fetch(`data/${f}?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.json());
+    const get = (f) => api(f).catch(() => local(f));
+    const [d, h] = await Promise.all([get('latest.json'), get('history.json').catch(() => [])]);
     const top = d.pillars.slice().sort((a, b) => b.score - a.score)[0];
     const next = d.gauge < 30 ? 30 : d.gauge < 50 ? 50 : d.gauge < 70 ? 70 : null;
     const ageMin = Math.round((Date.now() - new Date(d.updated_iso)) / 60000);
