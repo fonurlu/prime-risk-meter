@@ -1,19 +1,7 @@
 {
- "fetch_errors": {
-  "fred:BAMLC0A0CM": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:BAMLH0A0HYM2": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:CFNAIMA3": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:DRTSCILM": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:GDPNOW": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:ICSA": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:NFCI": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:PERMIT": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:SAHMREALTIME": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:T10Y3M": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)",
-  "fred:UMCSENT": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
- },
- "updated": "2026-11-09 12:52 ET",
- "updated_iso": "2026-11-09T12:52:54.021361-05:00",
+ "fetch_errors": {},
+ "updated": "2026-11-09 13:17 ET",
+ "updated_iso": "2026-11-09T13:17:21.813020-05:00",
  "gauge": 26,
  "zone": "Green",
  "contrarian": false,
@@ -28,19 +16,19 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 19.8
+   "score": 19.5
   },
   {
    "key": "trend",
    "name": "Market trend & breadth",
    "weight": 25,
-   "score": 17.5
+   "score": 17.3
   },
   {
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 46.3
+   "score": 45.9
   }
  ],
  "horizon": [
@@ -50,7 +38,7 @@
   },
   {
    "name": "Bear market (-20%) within 6 months",
-   "score": 19
+   "score": 18
   },
   {
    "name": "Recession within 12 months",
@@ -66,8 +54,8 @@
    "benign": 1.5,
    "danger": -0.5,
    "score": 41.5,
-   "source": "FRED T10Y3M 6 Nov (stale)",
-   "stale": true,
+   "source": "FRED T10Y3M 2026-11-06",
+   "stale": false,
    "why": "Inversion = recession in 6-18 months; un-inverting after an inversion is the late warning"
   },
   {
@@ -78,8 +66,8 @@
    "benign": 0.0,
    "danger": 0.5,
    "score": 0.0,
-   "source": "FRED SAHMREALTIME Oct (stale)",
-   "stale": true,
+   "source": "FRED SAHMREALTIME 2026-10-01",
+   "stale": false,
    "why": "0.5 = a recession has started"
   },
   {
@@ -90,8 +78,8 @@
    "benign": 200000,
    "danger": 300000,
    "score": 0.0,
-   "source": "FRED ICSA 31 Oct (stale)",
-   "stale": true,
+   "source": "FRED ICSA 2026-10-31",
+   "stale": false,
    "why": "Layoffs rising = economy cracking"
   },
   {
@@ -114,8 +102,8 @@
    "benign": 1500,
    "danger": 1200,
    "score": 34.0,
-   "source": "FRED PERMIT Sep (stale)",
-   "stale": true,
+   "source": "FRED PERMIT 2026-09-01",
+   "stale": false,
    "why": "Housing leads the cycle"
   },
   {
@@ -126,8 +114,8 @@
    "benign": 0.2,
    "danger": -0.7,
    "score": 18.9,
-   "source": "FRED CFNAIMA3 Sep (stale)",
-   "stale": true,
+   "source": "FRED CFNAIMA3 2026-09-01",
+   "stale": false,
    "why": "Below -0.7 = recession"
   },
   {
@@ -138,32 +126,32 @@
    "benign": 85,
    "danger": 55,
    "score": 100.0,
-   "source": "FRED UMCSENT Sep (stale)",
-   "stale": true,
+   "source": "FRED UMCSENT 2026-09-01",
+   "stale": false,
    "why": "Low = consumers pulling back"
   },
   {
    "id": "i08",
    "pillar": "macro",
    "name": "GDPNow, current quarter (%)",
-   "value": 3.2,
+   "value": 3.481,
    "benign": 2.5,
    "danger": 0.0,
    "score": 0.0,
-   "source": "Atlanta Fed 1 Oct (stale)",
-   "stale": true,
+   "source": "FRED GDPNOW 2026-10-01",
+   "stale": false,
    "why": "Atlanta Fed real-time GDP estimate"
   },
   {
    "id": "i09",
    "pillar": "credit",
    "name": "High-yield credit spread (%)",
-   "value": 3.48,
+   "value": 3.42,
    "benign": 3.0,
    "danger": 6.0,
-   "score": 16.0,
-   "source": "FRED BAMLH0A0HYM2 5 Nov (stale)",
-   "stale": true,
+   "score": 14.0,
+   "source": "FRED BAMLH0A0HYM2 2026-11-06",
+   "stale": false,
    "why": "Credit stress usually leads equity bear markets"
   },
   {
@@ -174,7 +162,7 @@
    "benign": 1.0,
    "danger": -5.0,
    "score": 40.0,
-   "source": "Yahoo HYG/IEF 09 Nov 12:52 ET",
+   "source": "Yahoo HYG/IEF 09 Nov 13:17 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
   },
@@ -186,8 +174,8 @@
    "benign": 0.8,
    "danger": 2.0,
    "score": 10.8,
-   "source": "FRED BAMLC0A0CM 6 Nov (stale)",
-   "stale": true,
+   "source": "FRED BAMLC0A0CM 2026-11-06",
+   "stale": false,
    "why": "Corporate funding stress"
   },
   {
@@ -198,19 +186,19 @@
    "benign": -0.6,
    "danger": 0.3,
    "score": 15.7,
-   "source": "FRED NFCI 30 Oct (stale)",
-   "stale": true,
+   "source": "FRED NFCI 2026-10-30",
+   "stale": false,
    "why": "Above 0 = tighter than average"
   },
   {
    "id": "i13",
    "pillar": "credit",
    "name": "MOVE bond volatility",
-   "value": 87.81,
+   "value": 87.79,
    "benign": 80,
    "danger": 140,
    "score": 13.0,
-   "source": "Yahoo ^MOVE 09 Nov 12:32 ET",
+   "source": "Yahoo ^MOVE 09 Nov 12:47 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -222,19 +210,19 @@
    "benign": -10,
    "danger": 40,
    "score": 23.4,
-   "source": "FRED DRTSCILM Q4 (stale)",
-   "stale": true,
+   "source": "FRED DRTSCILM 2026-10-01",
+   "stale": false,
    "why": "Above 40 = credit crunch"
   },
   {
    "id": "i15",
    "pillar": "trend",
    "name": "S&P 500 vs 200-day average (%)",
-   "value": 2.98,
+   "value": 3.01,
    "benign": 8,
    "danger": -8,
-   "score": 31.4,
-   "source": "Yahoo ^GSPC 09 Nov 12:52 ET",
+   "score": 31.2,
+   "source": "Yahoo ^GSPC 09 Nov 13:17 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -242,11 +230,11 @@
    "id": "i16",
    "pillar": "trend",
    "name": "S&P 500 drawdown from 1-yr high (%)",
-   "value": -3.49,
+   "value": -3.45,
    "benign": 0,
    "danger": -20,
-   "score": 17.5,
-   "source": "Yahoo ^GSPC 09 Nov 12:52 ET",
+   "score": 17.2,
+   "source": "Yahoo ^GSPC 09 Nov 13:17 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -254,11 +242,11 @@
    "id": "i17",
    "pillar": "trend",
    "name": "Nasdaq drawdown from 1-yr high (%)",
-   "value": -8.65,
+   "value": -8.7,
    "benign": 0,
    "danger": -20,
-   "score": 43.2,
-   "source": "Yahoo ^IXIC 09 Nov 12:52 ET",
+   "score": 43.5,
+   "source": "Yahoo ^IXIC 09 Nov 13:17 ET",
    "stale": false,
    "why": "Health of the AI/tech leaders"
   },
@@ -266,11 +254,11 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 2.6,
+   "value": 2.72,
    "benign": 2,
    "danger": -5,
    "score": 0.0,
-   "source": "Yahoo RSP/SPY 09 Nov 12:52 ET",
+   "source": "Yahoo RSP/SPY 09 Nov 13:17 ET",
    "stale": false,
    "why": "A narrow market is fragile"
   },
@@ -278,11 +266,11 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": 6.07,
+   "value": 6.23,
    "benign": 8,
    "danger": -8,
-   "score": 12.1,
-   "source": "Yahoo RSP 09 Nov 12:52 ET",
+   "score": 11.1,
+   "source": "Yahoo RSP 09 Nov 13:17 ET",
    "stale": false,
    "why": "Breadth of the market"
   },
@@ -290,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 13.78,
+   "value": 13.7,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 09 Nov 12:42 ET",
+   "source": "Yahoo HG=F/GC=F 09 Nov 13:07 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +290,11 @@
    "id": "i21",
    "pillar": "trend",
    "name": "TSX vs 200-day average (%)",
-   "value": 5.02,
+   "value": 5.14,
    "benign": 8,
    "danger": -8,
-   "score": 18.6,
-   "source": "Yahoo ^GSPTSE 09 Nov 12:52 ET",
+   "score": 17.9,
+   "source": "Yahoo ^GSPTSE 09 Nov 13:17 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
@@ -314,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 20.27,
+   "value": 20.14,
    "benign": 14,
    "danger": 35,
-   "score": 29.9,
-   "source": "Yahoo ^VIX 09 Nov 12:37 ET",
+   "score": 29.2,
+   "source": "Yahoo ^VIX 09 Nov 13:02 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -326,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 0.954,
+   "value": 0.95,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 41.6,
-   "source": "Yahoo ^VIX/^VIX3M 09 Nov 12:37 ET",
+   "score": 40.0,
+   "source": "Yahoo ^VIX/^VIX3M 09 Nov 13:02 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -350,10 +338,10 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 31.7,
+   "value": 31.6,
    "benign": 75,
    "danger": 5,
-   "score": 61.9,
+   "score": 62.0,
    "source": "CNN 09 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
