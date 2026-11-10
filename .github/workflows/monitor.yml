@@ -1,33 +1,44 @@
 name: PRIME risk meter
 on:
   schedule:
-    - cron: '7,22,37,52 * * * *'   # every 15 min, off the busy :00/:15 marks (GitHub drops/delays crowded slots)
+    # GitHub often skips or delays scheduled starts, so each run stays awake
+    # ~1 hour and takes its own reading every 15 min. Two starts per hour =
+    # if GitHub skips one, the other still covers the hour.
+    - cron: '7,37 * * * *'
   workflow_dispatch:            # the "Run workflow" button = run now
 permissions:
   contents: write               # save the new readings for the web page
   issues: write                 # open an alert issue -> GitHub emails you
 concurrency:
   group: risk-meter
-  cancel-in-progress: false
+  cancel-in-progress: false     # a new start waits for the running one, then continues the chain
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install requests
-      - run: python monitor.py
+      - name: Take a reading every 15 min for ~1 hour
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-      - name: Save readings
         run: |
           git config user.name "prime-risk-meter"
           git config user.email "prime-risk-meter@users.noreply.github.com"
-          git add docs/data
-          git diff --cached --quiet || git commit -m "Risk reading $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git pull --rebase -X ours || true
-          git push
+          for i in 1 2 3 4; do
+            start=$(date +%s)
+            git pull --rebase -X theirs -q || true
+            python monitor.py || echo "reading $i failed - will retry next slot"
+            git add docs/data
+            git diff --cached --quiet || git commit -q -m "Risk reading $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase -X ours -q || true
+            git push -q || echo "push $i failed - next slot will push it"
+            if [ "$i" -lt 4 ]; then
+              wait=$(( 900 - ( $(date +%s) - start ) ))
+              [ "$wait" -gt 0 ] && sleep "$wait"
+            fi
+          done
