@@ -57,6 +57,27 @@ td.n { font-family: var(--mono); text-align: right; white-space: nowrap; }
 .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font: 12px var(--mono); box-shadow: 0 4px 14px rgba(0,0,0,.15); }
 .err { color: var(--bad); }
 details summary { cursor: pointer; font-weight: 500; }
+.agenda { display: flex; flex-direction: column; gap: 12px; }
+.ev { border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.ev-h { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.ev-t { font: 500 13px var(--mono); color: var(--muted); min-width: 74px; }
+.ev-n { font-weight: 600; flex: 1 1 260px; }
+.dots { font: 12px var(--mono); color: var(--hot); letter-spacing: 1px; }
+.nums { display: flex; gap: 18px; flex-wrap: wrap; margin: 8px 0 10px; font-size: 13px; color: var(--muted); }
+.nums b { font: 500 16px var(--mono); color: var(--fg); margin-left: 4px; }
+.res { font: 600 11px var(--sans); letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; color: #fff; align-self: center; }
+.sc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+@media (max-width: 760px) { .sc { grid-template-columns: minmax(0, 1fr); } }
+.sx { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 13px; }
+.sx h3 { margin: 0 0 6px; font: 600 12px var(--sans); text-transform: uppercase; letter-spacing: .06em; }
+.sx dl { margin: 0; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 3px 8px; }
+.sx dt { color: var(--muted); } .sx dd { margin: 0; }
+.sx.hit { border: 2px solid var(--accent); }
+.sx.miss { opacity: .45; }
+.tag { font: 600 10px var(--sans); background: var(--accent); color: var(--panel); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+.tabs { display: flex; gap: 6px; }
+.tabs .btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--panel); }
+.day { font: 600 12px var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -85,6 +106,14 @@ details summary { cursor: pointer; font-weight: 500; }
       <h2 style="margin-top:18px">Risk by horizon</h2>
       <table><tbody id="horizon"></tbody></table>
     </div>
+  </section>
+
+  <section class="card">
+    <div class="head" style="margin-bottom:12px">
+      <div><h2 style="margin:0 0 4px">Agenda - what can move the meter</h2><div class="muted" id="agsum">Loading...</div></div>
+      <div class="tabs"><button class="btn" type="button" id="tabToday" aria-pressed="true">Today</button><button class="btn" type="button" id="tabWeek" aria-pressed="false">Next 7 days</button></div>
+    </div>
+    <div class="agenda" id="agenda"></div>
   </section>
 
   <section class="card">
@@ -171,14 +200,70 @@ function history(h) {
   box.append(svg, tip);
 }
 
+
+// ---------------------------------------------------------------- agenda (docs/data/agenda.json)
+let AG = null, agMode = 'today';
+const etDay = (d = new Date()) => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(d);
+function outcome(e) {
+  if (e.result) return e.result;
+  if (e.actual == null || e.expected == null) return 'pending';
+  const d = e.actual - e.expected, tol = e.tol ?? 0;
+  return d > tol ? 'higher' : d < -tol ? 'lower' : 'inline';
+}
+const RES = { higher: ['Above expected', 'var(--bad)'], lower: ['Below expected', 'var(--ok)'], inline: ['In line', 'var(--muted)'],
+  pending: ['Waiting', 'var(--warn)'], reported: ['Reported', 'var(--accent)'], info: ['Info', 'var(--muted)'] };
+function scen(title, s, cls) {
+  if (!s) return null;
+  const h = el('h3', { textContent: title }); if (cls === 'hit') h.append(el('span', { className: 'tag', textContent: 'HAPPENED' }));
+  const dl = el('dl'); [['Market', s.market], ['Meter', s.meter], ['Tickers', s.tickers]].forEach(([k, v]) => { if (v) dl.append(el('dt', { textContent: k }), el('dd', { textContent: v })); });
+  return el('div', { className: 'sx ' + (cls || '') }, [h, dl]);
+}
+function evCard(e) {
+  const o = outcome(e), [rl, rc] = RES[o];
+  const head = el('div', { className: 'ev-h' }, [el('span', { className: 'ev-t', textContent: e.time }), el('span', { className: 'ev-n', textContent: e.event }),
+    el('span', { className: 'dots', title: 'Importance', textContent: '\u25CF'.repeat(e.tier) + '\u25CB'.repeat(3 - e.tier) }),
+    Object.assign(el('span', { className: 'res', textContent: rl }), { style: `background:${rc}` })]);
+  const kids = [head];
+  const u = e.unit ? ' ' + e.unit : '';
+  const nums = [['Previous', e.prev], ['Expected', e.expected], ['Actual', e.actual]].filter(([, v]) => v != null);
+  if (nums.length) kids.push(el('div', { className: 'nums' }, nums.map(([k, v]) => el('span', {}, [k, el('b', { textContent: fmt(v) + u })]))));
+  if (e.result_note) kids.push(el('div', { className: 'muted', style: 'margin:6px 0 10px', textContent: e.result_note }));
+  const hi = scen('If ABOVE expected', e.if_higher, o === 'higher' ? 'hit' : (o === 'lower' || o === 'inline') ? 'miss' : '');
+  const lo = scen('If BELOW expected', e.if_lower, o === 'lower' ? 'hit' : (o === 'higher' || o === 'inline') ? 'miss' : '');
+  if (hi || lo) kids.push(el('div', { className: 'sc' }, [hi, lo].filter(Boolean)));
+  if (o === 'inline' && e.in_line) kids.push(el('div', { className: 'muted', style: 'margin-top:8px', textContent: 'In line: ' + e.in_line }));
+  if (!hi && !lo && e.in_line) kids.push(el('div', { className: 'muted', style: 'margin-top:6px', textContent: e.in_line }));
+  return el('div', { className: 'ev' }, kids);
+}
+function renderAgenda() {
+  const box = $('agenda'); box.replaceChildren();
+  if (!AG) { $('agsum').textContent = 'No agenda file yet.'; return; }
+  const today = etDay(), end = etDay(new Date(Date.now() + 7 * 864e5));
+  const evs = AG.events.filter((e) => agMode === 'today' ? e.date === today : e.date >= today && e.date <= end);
+  const todays = AG.events.filter((e) => e.date === today), done = todays.filter((e) => !['pending'].includes(outcome(e)));
+  const hot = todays.filter((e) => outcome(e) === 'higher').length;
+  $('agsum').textContent = `${todays.length} events today, ${done.length} out` + (hot ? `, ${hot} above expectations` : '') + `. Agenda updated ${AG.updated}.`;
+  if (!evs.length) { box.append(el('div', { className: 'muted', textContent: 'Nothing scheduled.' })); return; }
+  let last = '';
+  evs.forEach((e) => {
+    if (agMode === 'week' && e.date !== last) { last = e.date; box.append(el('div', { className: 'day', textContent: new Date(e.date + 'T12:00').toLocaleDateString('en-CA', { weekday: 'long', month: 'short', day: 'numeric' }) })); }
+    box.append(evCard(e));
+  });
+}
+['tabToday', 'tabWeek'].forEach((id) => $(id).addEventListener('click', () => {
+  agMode = id === 'tabToday' ? 'today' : 'week';
+  $('tabToday').setAttribute('aria-pressed', agMode === 'today'); $('tabWeek').setAttribute('aria-pressed', agMode === 'week'); renderAgenda();
+}));
+
 async function load() {
   try {
     // Read the newest readings straight from the GitHub repository (always current), falling back to the published copy.
     const api = (f) => fetch(`https://api.github.com/repos/${owner}/${repo}/contents/docs/data/${f}?ref=main&t=${Date.now()}`, { headers: { Accept: 'application/vnd.github.raw+json' }, cache: 'no-store' })
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
     const local = (f) => fetch(`data/${f}?t=${Date.now()}`, { cache: 'no-store' }).then((r) => r.json());
-    const get = (f) => api(f).catch(() => local(f));
-    const [d, h] = await Promise.all([get('latest.json'), get('history.json').catch(() => [])]);
+    const get = (f) => (window.EMBED && window.EMBED[f]) ? Promise.resolve(window.EMBED[f]) : api(f).catch(() => local(f));
+    const [d, h, ag] = await Promise.all([get('latest.json'), get('history.json').catch(() => []), get('agenda.json').catch(() => null)]);
+    AG = ag; renderAgenda();
     const top = d.pillars.slice().sort((a, b) => b.score - a.score)[0];
     const next = d.gauge < 30 ? 30 : d.gauge < 50 ? 50 : d.gauge < 70 ? 70 : null;
     const ageMin = Math.round((Date.now() - new Date(d.updated_iso)) / 60000);
