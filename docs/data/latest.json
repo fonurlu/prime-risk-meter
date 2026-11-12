@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 04:59 ET",
- "updated_iso": "2026-11-12T04:59:50.038945-05:00",
+ "updated": "2026-11-12 05:14 ET",
+ "updated_iso": "2026-11-12T05:14:49.566379-05:00",
  "gauge": 24,
  "zone": "Green",
  "contrarian": false,
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 12.29,
+   "value": 12.16,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 04:49 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 05:04 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -306,7 +306,7 @@
    "benign": 14,
    "danger": 35,
    "score": 20.0,
-   "source": "Yahoo ^VIX 12 Nov 04:44 ET",
+   "source": "Yahoo ^VIX 12 Nov 04:59 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -318,7 +318,7 @@
    "benign": 0.85,
    "danger": 1.1,
    "score": 38.4,
-   "source": "Yahoo ^VIX/^VIX3M 12 Nov 04:44 ET",
+   "source": "Yahoo ^VIX/^VIX3M 12 Nov 04:59 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
