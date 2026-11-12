@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 17:56 ET",
- "updated_iso": "2026-11-12T17:56:42.223996-05:00",
+ "updated": "2026-11-12 18:11 ET",
+ "updated_iso": "2026-11-12T18:11:41.541484-05:00",
  "gauge": 25,
  "zone": "Green",
  "contrarian": false,
@@ -282,7 +282,7 @@
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 16:59 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 18:01 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
