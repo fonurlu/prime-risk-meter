@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 16:42 ET",
- "updated_iso": "2026-11-12T16:42:26.378499-05:00",
+ "updated": "2026-11-12 16:57 ET",
+ "updated_iso": "2026-11-12T16:57:26.677799-05:00",
  "gauge": 25,
  "zone": "Green",
  "contrarian": false,
@@ -246,7 +246,7 @@
    "benign": 0,
    "danger": -20,
    "score": 40.4,
-   "source": "Yahoo ^IXIC 12 Nov 16:42 ET",
+   "source": "Yahoo ^IXIC 12 Nov 16:57 ET",
    "stale": false,
    "why": "Health of the AI/tech leaders"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 13.83,
+   "value": 13.89,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 16:32 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 16:47 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
