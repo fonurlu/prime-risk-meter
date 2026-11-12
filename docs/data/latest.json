@@ -1,8 +1,8 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 03:21 ET",
- "updated_iso": "2026-11-12T03:21:13.024890-05:00",
- "gauge": 23,
+ "updated": "2026-11-12 03:36 ET",
+ "updated_iso": "2026-11-12T03:36:12.658674-05:00",
+ "gauge": 24,
  "zone": "Green",
  "contrarian": false,
  "pillars": [
@@ -28,13 +28,13 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 38.4
+   "score": 43.0
   }
  ],
  "horizon": [
   {
    "name": "Correction (-10%) within 3 months",
-   "score": 27
+   "score": 29
   },
   {
    "name": "Bear market (-20%) within 6 months",
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 25.7,
-   "source": "Yahoo ^GSPC 11 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 11 Nov 16:42 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 12.8,
-   "source": "Yahoo ^GSPC 11 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 11 Nov 16:42 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 12.37,
+   "value": 12.59,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 03:11 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 03:26 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 17.49,
+   "value": 18.38,
    "benign": 14,
    "danger": 35,
-   "score": 16.6,
-   "source": "Yahoo ^VIX 11 Nov 16:15 ET",
+   "score": 20.9,
+   "source": "Yahoo ^VIX 12 Nov 03:21 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 0.909,
+   "value": 0.955,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 23.6,
-   "source": "Yahoo ^VIX/^VIX3M 11 Nov 16:15 ET",
+   "score": 42.0,
+   "source": "Yahoo ^VIX/^VIX3M 12 Nov 03:21 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -342,7 +342,7 @@
    "benign": 75,
    "danger": 5,
    "score": 53.6,
-   "source": "CNN 11 Nov",
+   "source": "CNN 12 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
   },
