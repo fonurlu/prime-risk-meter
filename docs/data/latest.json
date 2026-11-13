@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-13 17:13 ET",
- "updated_iso": "2026-11-13T17:13:33.698728-05:00",
+ "updated": "2026-11-13 17:28 ET",
+ "updated_iso": "2026-11-13T17:28:33.780849-05:00",
  "gauge": 24,
  "zone": "Green",
  "contrarian": false,
@@ -246,7 +246,7 @@
    "benign": 0,
    "danger": -20,
    "score": 44.6,
-   "source": "Yahoo ^IXIC 13 Nov 17:13 ET",
+   "source": "Yahoo ^IXIC 13 Nov 17:15 ET",
    "stale": false,
    "why": "Health of the AI/tech leaders"
   },
