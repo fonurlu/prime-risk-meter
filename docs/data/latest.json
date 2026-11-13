@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 21:30 ET",
- "updated_iso": "2026-11-12T21:30:17.992498-05:00",
+ "updated": "2026-11-12 21:45 ET",
+ "updated_iso": "2026-11-12T21:45:17.977334-05:00",
  "gauge": 24,
  "zone": "Green",
  "contrarian": false,
@@ -16,13 +16,13 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 18.0
+   "score": 18.5
   },
   {
    "key": "trend",
    "name": "Market trend & breadth",
    "weight": 25,
-   "score": 17.7
+   "score": 18.2
   },
   {
    "key": "sent",
@@ -42,7 +42,7 @@
   },
   {
    "name": "Recession within 12 months",
-   "score": 21
+   "score": 22
   }
  ],
  "indicators": [
@@ -158,10 +158,10 @@
    "id": "i10",
    "pillar": "credit",
    "name": "Junk vs Treasuries, 3-month change (%)",
-   "value": -0.22,
+   "value": -0.4,
    "benign": 1.0,
    "danger": -5.0,
-   "score": 20.3,
+   "score": 23.3,
    "source": "Yahoo HYG/IEF 12 Nov 16:00 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
@@ -254,10 +254,10 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 1.81,
+   "value": 1.59,
    "benign": 2,
    "danger": -5,
-   "score": 2.7,
+   "score": 5.9,
    "source": "Yahoo RSP/SPY 12 Nov 16:00 ET",
    "stale": false,
    "why": "A narrow market is fragile"
@@ -266,10 +266,10 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": 5.8,
+   "value": 5.74,
    "benign": 8,
    "danger": -8,
-   "score": 13.8,
+   "score": 14.1,
    "source": "Yahoo RSP 12 Nov 16:00 ET",
    "stale": false,
    "why": "Breadth of the market"
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 16.31,
+   "value": 16.24,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 21:19 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 21:35 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
