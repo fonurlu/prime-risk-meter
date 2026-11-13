@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-12 19:24 ET",
- "updated_iso": "2026-11-12T19:24:24.729248-05:00",
+ "updated": "2026-11-12 19:57 ET",
+ "updated_iso": "2026-11-12T19:57:15.598890-05:00",
  "gauge": 25,
  "zone": "Green",
  "contrarian": false,
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 13.8,
+   "value": 13.69,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 12 Nov 19:13 ET",
+   "source": "Yahoo HG=F/GC=F 12 Nov 19:46 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
