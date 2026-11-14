@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-14 03:11 ET",
- "updated_iso": "2026-11-14T03:11:15.926934-05:00",
+ "updated": "2026-11-14 03:26 ET",
+ "updated_iso": "2026-11-14T03:26:16.392924-05:00",
  "gauge": 24,
  "zone": "Green",
  "contrarian": false,
@@ -198,7 +198,7 @@
    "benign": 80,
    "danger": 140,
    "score": 31.3,
-   "source": "Yahoo ^MOVE 13 Nov 16:00 ET",
+   "source": "Yahoo ^MOVE 13 Nov 16:17 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -294,7 +294,7 @@
    "benign": 8,
    "danger": -8,
    "score": 25.2,
-   "source": "Yahoo ^GSPTSE 13 Nov 16:00 ET",
+   "source": "Yahoo ^GSPTSE 13 Nov 16:20 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
