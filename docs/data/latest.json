@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-13 23:16 ET",
- "updated_iso": "2026-11-13T23:16:28.202786-05:00",
+ "updated": "2026-11-13 23:31 ET",
+ "updated_iso": "2026-11-13T23:31:27.436236-05:00",
  "gauge": 24,
  "zone": "Green",
  "contrarian": false,
@@ -198,7 +198,7 @@
    "benign": 80,
    "danger": 140,
    "score": 31.3,
-   "source": "Yahoo ^MOVE 13 Nov 16:00 ET",
+   "source": "Yahoo ^MOVE 13 Nov 16:17 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 31.1,
-   "source": "Yahoo ^GSPC 13 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 13 Nov 16:43 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 16.4,
-   "source": "Yahoo ^GSPC 13 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 13 Nov 16:43 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -294,7 +294,7 @@
    "benign": 8,
    "danger": -8,
    "score": 25.2,
-   "source": "Yahoo ^GSPTSE 13 Nov 16:00 ET",
+   "source": "Yahoo ^GSPTSE 13 Nov 16:20 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
