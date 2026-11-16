@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-16 04:41 ET",
- "updated_iso": "2026-11-16T04:41:01.366423-05:00",
+ "updated": "2026-11-16 04:56 ET",
+ "updated_iso": "2026-11-16T04:56:01.311674-05:00",
  "gauge": 25,
  "zone": "Green",
  "contrarian": false,
@@ -28,7 +28,7 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 45.7
+   "score": 46.0
   }
  ],
  "horizon": [
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 13.62,
+   "value": 13.61,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 16 Nov 04:31 ET",
+   "source": "Yahoo HG=F/GC=F 16 Nov 04:45 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 20.06,
+   "value": 20.12,
    "benign": 14,
    "danger": 35,
-   "score": 28.9,
-   "source": "Yahoo ^VIX 16 Nov 04:25 ET",
+   "score": 29.1,
+   "source": "Yahoo ^VIX 16 Nov 04:40 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 0.973,
+   "value": 0.976,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 49.2,
-   "source": "Yahoo ^VIX/^VIX3M 16 Nov 04:25 ET",
+   "score": 50.4,
+   "source": "Yahoo ^VIX/^VIX3M 16 Nov 04:40 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
