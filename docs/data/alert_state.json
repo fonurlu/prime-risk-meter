@@ -4,11 +4,6 @@
    "msg": "Consumer sentiment (U. Michigan) = 48.1 (score 100/100). Low = consumers pulling back.",
    "issue": 1,
    "since": "2026-11-09 13:17 ET"
-  },
-  "ind:i23": {
-   "msg": "VIX / 3-month VIX = 1.029 (score 72/100). Above 1 = panic right now.",
-   "issue": 4,
-   "since": "2026-11-16 15:00 ET"
   }
  },
  "sent_today": {
