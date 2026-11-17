@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-17 07:11 ET",
+ "updated": "2026-11-17 11:36 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -268,7 +268,9 @@
     "meter": "+1",
     "tickers": "HD, DIS down"
    },
-   "in_line": ""
+   "in_line": "",
+   "result": "reported",
+   "result_note": "Share reaction vs prior close (auto, 17 Nov 11:36 ET): HD -2.2%, DIS +0.5%. Results detail: company release."
   },
   {
    "date": "2026-11-17",
@@ -278,7 +280,7 @@
    "unit": "% m/m",
    "prev": 0.8,
    "expected": 0.2,
-   "actual": null,
+   "actual": 0.2,
    "if_higher": {
     "market": "Strong consumer + 10y above 5.1%: hike odds up; Nasdaq and gold down",
     "meter": "+1 to +3",
@@ -290,7 +292,8 @@
     "tickers": "XLU, GLD, TLT up"
    },
    "in_line": "",
-   "tol": 0.05
+   "tol": 0.05,
+   "actual_src": "FRED RSAFS 2026-10, auto 17 Nov 11:36 ET"
   },
   {
    "date": "2026-11-17",
@@ -300,7 +303,7 @@
    "unit": "%",
    "prev": 0.7,
    "expected": 0.1,
-   "actual": null,
+   "actual": -0.4,
    "tol": 0.1,
    "if_higher": {
     "market": "Firm factory output: growth intact, yields firm",
@@ -312,7 +315,8 @@
     "meter": "0 to -1",
     "tickers": "XLI down"
    },
-   "in_line": "Muted"
+   "in_line": "Muted",
+   "actual_src": "FRED INDPRO 2026-10, auto 17 Nov 11:36 ET"
   },
   {
    "date": "2026-11-17",
@@ -608,5 +612,7 @@
    },
    "in_line": ""
   }
- ]
+ ],
+ "auto_checked": "2026-11-17 11:36 ET",
+ "auto_errors": []
 }
