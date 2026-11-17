@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-16 23:21 ET",
- "updated_iso": "2026-11-16T23:21:09.686671-05:00",
+ "updated": "2026-11-16 23:36 ET",
+ "updated_iso": "2026-11-16T23:36:09.941786-05:00",
  "gauge": 29,
  "zone": "Green",
  "contrarian": true,
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 43.7,
-   "source": "Yahoo ^GSPC 16 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 16 Nov 17:22 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 25.8,
-   "source": "Yahoo ^GSPC 16 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 16 Nov 17:22 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -282,7 +282,7 @@
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 16 Nov 23:09 ET",
+   "source": "Yahoo HG=F/GC=F 16 Nov 23:26 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
