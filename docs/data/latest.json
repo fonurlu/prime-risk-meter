@@ -1,8 +1,8 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-17 07:08 ET",
- "updated_iso": "2026-11-17T07:08:41.819568-05:00",
- "gauge": 28,
+ "updated": "2026-11-17 07:20 ET",
+ "updated_iso": "2026-11-17T07:20:49.741633-05:00",
+ "gauge": 29,
  "zone": "Green",
  "contrarian": true,
  "pillars": [
@@ -28,13 +28,13 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 51.0
+   "score": 53.9
   }
  ],
  "horizon": [
   {
    "name": "Correction (-10%) within 3 months",
-   "score": 38
+   "score": 40
   },
   {
    "name": "Bear market (-20%) within 6 months",
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 13.22,
+   "value": 13.24,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 17 Nov 06:58 ET",
+   "source": "Yahoo HG=F/GC=F 17 Nov 07:10 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 22.6,
+   "value": 22.52,
    "benign": 14,
    "danger": 35,
-   "score": 41.0,
-   "source": "Yahoo ^VIX 17 Nov 06:53 ET",
+   "score": 40.6,
+   "source": "Yahoo ^VIX 17 Nov 07:05 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 0.982,
+   "value": 0.978,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 52.8,
-   "source": "Yahoo ^VIX/^VIX3M 17 Nov 06:53 ET",
+   "score": 51.2,
+   "source": "Yahoo ^VIX/^VIX3M 17 Nov 07:05 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -326,11 +326,11 @@
    "id": "i24",
    "pillar": "sent",
    "name": "AAII bulls minus bears (pts)",
-   "value": -14.3,
+   "value": -21,
    "benign": 10,
    "danger": -30,
-   "score": 60.8,
-   "source": "manual \u00b7 week ending 4 Nov 2026",
+   "score": 77.5,
+   "source": "manual \u00b7 week ending 12 Nov 2026 (30% bulls / 51% bears)",
    "stale": false,
    "why": "Retail investor mood (weekly)"
   },
@@ -338,10 +338,10 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 30.8,
+   "value": 31.0,
    "benign": 75,
    "danger": 5,
-   "score": 63.1,
+   "score": 62.9,
    "source": "CNN 17 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
