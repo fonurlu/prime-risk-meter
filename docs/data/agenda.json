@@ -326,9 +326,9 @@
    "unit": "Rev $B",
    "prev": null,
    "expected": 109,
-      "actual": 115.84,
-"result": "reported",
-"result_note": "Revenue $115.84B vs ~$109B expected; adj EPS $2.68 vs $2.48; Q4 revenue guide about $130B; shares about +3% after hours (regular close $155.46, -0.4%). Source: market wrap, 17 Nov evening; 8-K not yet checked.",
+   "actual": 115.84,
+   "result": "reported",
+   "result_note": "Revenue $115.84B vs ~$109B expected; adj EPS $2.68 vs $2.48; Q4 revenue guide about $130B; shares about +3% after hours (regular close $155.46, -0.4%). Source: market wrap, 17 Nov evening; 8-K not yet checked.",
    "if_higher": {
     "market": "Options imply +/-10-13%; beat + CEO probe contained = AI relief rally",
     "meter": "-3 to -5",
@@ -615,6 +615,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-17 18:05 ET",
+ "auto_checked": "2026-11-17 18:20 ET",
  "auto_errors": []
 }
