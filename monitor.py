@@ -124,6 +124,108 @@ def measure(src, manual):
     raise ValueError(t)
 
 
+# ---------------------------------------------------------------- agenda auto-fill
+AGENDA = os.path.join(DATA, 'agenda.json')
+FRED_RULES = [  # (words in the event title, FRED series, mode, scale, decimals)
+    ('us retail sales', 'RSAFS', 'pct', 1, 1), ('industrial production', 'INDPRO', 'pct', 1, 1),
+    ('housing starts', 'HOUST', 'level', 1, 0), ('jobless claims', 'ICSA', 'level', 0.001, 0),
+    ('michigan', 'UMCSENT', 'level', 1, 1)]
+TICKERS = {'home depot': 'HD', 'disney': 'DIS', 'target': 'TGT', 'lowe': 'LOW', 'tjx': 'TJX', 'walmart': 'WMT', 'ross': 'ROST',
+           'nvidia': 'NVDA', 'intuit': 'INTU', 'palo alto': 'PANW', 'coreweave': 'CRWV', 'salesforce': 'CRM', 'zoom': 'ZM'}
+
+
+def fred_obs(series, n=8):
+    """Fresh (uncached) latest observations, oldest first: [(date, value)]."""
+    key = os.environ.get('FRED_API_KEY')
+    if key:
+        r = requests.get('https://api.stlouisfed.org/fred/series/observations', timeout=25, headers=UA,
+                         params={'series_id': series, 'api_key': key, 'file_type': 'json', 'sort_order': 'desc', 'limit': n})
+        r.raise_for_status()
+        return [(o['date'], float(o['value'])) for o in r.json()['observations'] if o['value'] not in ('.', '')][::-1]
+    r = requests.get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}', headers=UA, timeout=25)
+    r.raise_for_status()
+    return [(a, float(b)) for a, b in list(csv.reader(io.StringIO(r.text)))[1:] if b not in ('.', '')][-n:]
+
+
+def _due(e):
+    """When the release should be out: 15 min after the clock time, 09:35 for pre-open, next session 09:35 for after-close."""
+    y, mo, d = map(int, e['date'].split('-'))
+    t = e.get('time', '')
+    if len(t) == 5 and t[2] == ':':
+        return dt.datetime(y, mo, d, int(t[:2]), int(t[3:]), tzinfo=ET) + dt.timedelta(minutes=15)
+    if t == 'Pre-open':
+        return dt.datetime(y, mo, d, 9, 35, tzinfo=ET)
+    if t == 'After close':
+        nxt = dt.datetime(y, mo, d, 9, 35, tzinfo=ET) + dt.timedelta(days=1)
+        while nxt.weekday() >= 5:
+            nxt += dt.timedelta(days=1)
+        return nxt
+    return None
+
+
+def _ref(series, event_date):
+    """Reference period the release covers: weekly claims = latest Saturday before the date, else the previous month."""
+    d = dt.date.fromisoformat(event_date)
+    if series == 'ICSA':
+        d -= dt.timedelta(days=(d.weekday() + 2) % 7 or 7)
+        return d.isoformat()
+    first = d.replace(day=1) - dt.timedelta(days=1)
+    return first.replace(day=1).isoformat()
+
+
+def autofill_agenda(now):
+    """As soon as a release is out, fill 'actual' (official data via FRED) or the earnings price reaction,
+    so the page never sits on 'Released - data pending'. Events can still carry a manual 'actual'/'result'."""
+    ag = load(AGENDA, None)
+    if not ag:
+        return
+    filled, errs = [], []
+    for e in ag['events']:
+        if e.get('actual') is not None or e.get('result') or e.get('result_note'):
+            continue
+        due = _due(e)
+        if not due or now < due:
+            continue
+        title = e['event'].lower()
+        try:
+            rule = next((r for r in FRED_RULES if r[0] in title), None)
+            if rule:
+                _, ser, mode, scale, dp = rule
+                ref = _ref(ser, e['date'])
+                obs = dict(fred_obs(ser))
+                dates = sorted(obs)
+                if ref not in obs:
+                    continue                      # not on FRED yet - try again next run
+                v = obs[ref]
+                if mode == 'pct':
+                    i = dates.index(ref)
+                    if i == 0:
+                        continue
+                    v = (v / obs[dates[i - 1]] - 1) * 100
+                e['actual'] = round(v * scale, dp)
+                e['actual_src'] = f"FRED {ser} {ref[:7]}, auto {now.strftime('%d %b %H:%M ET')}"
+                filled.append(e['event'])
+            elif any(w in title for w in ('results', 'earnings')):
+                syms = [t for k, t in TICKERS.items() if k in title]
+                if not syms:
+                    continue
+                parts = []
+                for sym in syms:
+                    c, _ = yahoo(sym)
+                    parts.append(f"{sym} {(c[-1] / c[-2] - 1) * 100:+.1f}%")
+                e['result'] = 'reported'
+                e['result_note'] = 'Share reaction vs prior close (auto, ' + now.strftime('%d %b %H:%M ET') + '): ' + ', '.join(parts) + '. Results detail: company release.'
+                filled.append(e['event'])
+        except Exception as ex:
+            errs.append(f"{e['event'][:30]}: {str(ex)[:80]}")
+    ag['auto_checked'] = now.strftime('%Y-%m-%d %H:%M ET')
+    ag['auto_errors'] = errs
+    if filled:
+        ag['updated'] = ag['auto_checked']
+    save(AGENDA, ag)
+    print('agenda auto-fill:', filled or 'nothing due', errs or '')
+
+
 # ---------------------------------------------------------------- scoring
 def score(v, benign, danger):
     return max(0.0, min(100.0, (v - benign) / (danger - benign) * 100))
@@ -214,6 +316,11 @@ def run():
     hist = list(daily.values()) + recent
 
     alerts(cfg, latest, prev, hist, now)
+    if not OFFLINE:
+        try:
+            autofill_agenda(now)
+        except Exception as ex:
+            print('agenda auto-fill failed:', ex)
     save(os.path.join(DATA, 'latest.json'), latest)
     save(os.path.join(DATA, 'history.json'), hist)
     print(f"gauge {gauge} {latest['zone']} | " + ' '.join(f"{p['key']}={p['score']}" for p in pillars) +
