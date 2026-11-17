@@ -10,11 +10,6 @@
    "issue": 5,
    "since": "2026-11-17 07:20 ET"
   },
-  "line:i15": {
-   "msg": "S&P 500 below its 200-day: now -0.48.",
-   "issue": 7,
-   "since": "2026-11-17 10:51 ET"
-  },
   "ind:i25": {
    "msg": "CNN Fear & Greed (0-100) = 25.6 (score 71/100). Below 25 = extreme fear.",
    "issue": 8,
