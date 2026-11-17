@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-16 19:58 ET",
- "updated_iso": "2026-11-16T19:58:42.796243-05:00",
+ "updated": "2026-11-16 20:48 ET",
+ "updated_iso": "2026-11-16T20:48:37.371720-05:00",
  "gauge": 29,
  "zone": "Green",
  "contrarian": true,
@@ -16,7 +16,7 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 19.4
+   "score": 20.0
   },
   {
    "key": "trend",
@@ -38,7 +38,7 @@
   },
   {
    "name": "Bear market (-20%) within 6 months",
-   "score": 22
+   "score": 23
   },
   {
    "name": "Recession within 12 months",
@@ -158,10 +158,10 @@
    "id": "i10",
    "pillar": "credit",
    "name": "Junk vs Treasuries, 3-month change (%)",
-   "value": -0.64,
+   "value": -0.84,
    "benign": 1.0,
    "danger": -5.0,
-   "score": 27.3,
+   "score": 30.7,
    "source": "Yahoo HYG/IEF 16 Nov 16:00 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
@@ -254,7 +254,7 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 3.31,
+   "value": 3.54,
    "benign": 2,
    "danger": -5,
    "score": 0.0,
@@ -266,10 +266,10 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": 4.77,
+   "value": 4.83,
    "benign": 8,
    "danger": -8,
-   "score": 20.2,
+   "score": 19.8,
    "source": "Yahoo RSP 16 Nov 16:00 ET",
    "stale": false,
    "why": "Breadth of the market"
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 12.72,
+   "value": 13.65,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 16 Nov 19:48 ET",
+   "source": "Yahoo HG=F/GC=F 16 Nov 20:38 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
