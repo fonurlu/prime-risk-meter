@@ -9,16 +9,6 @@
    "msg": "AAII bulls minus bears (pts) = -21 (score 78/100). Retail investor mood (weekly).",
    "issue": 5,
    "since": "2026-11-17 07:20 ET"
-  },
-  "line:i23": {
-   "msg": "VIX above 3-month VIX (panic): now 1.003.",
-   "issue": 6,
-   "since": "2026-11-17 09:00 ET"
-  },
-  "zone:Yellow": {
-   "msg": "PRIME Risk Gauge is in the Yellow zone (30).",
-   "issue": 6,
-   "since": "2026-11-17 09:00 ET"
   }
  },
  "sent_today": {
