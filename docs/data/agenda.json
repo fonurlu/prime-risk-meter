@@ -1,82 +1,492 @@
 {
- "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected.",
- "updated": "2026-11-10 09:20 ET",
+ "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
+ "updated": "2026-11-16 19:45 ET",
  "events": [
   {
-   "date": "2026-11-10", "time": "08:30", "event": "US CPI, October (headline, m/m)", "tier": 3, "unit": "%",
-   "prev": 0.6, "expected": 0.3, "actual": 0.4, "tol": 0.05,
-   "if_higher": {"market": "Dec 50bp hike back in play; 10-yr up, USD up; Nasdaq -1 to -2%, gold -1%, silver -2%", "meter": "+2 to +4 (sentiment, trend) - can tip Green into Yellow (30)", "tickers": "QQQ, SMH, NVDA, GLD, SLV, TLT down; UUP up"},
-   "if_lower": {"market": "25bp hike only or a pause; yields down; growth stocks and metals up", "meter": "-2 (sentiment eases)", "tickers": "QQQ, IBB, IWM, GLD up"},
-   "in_line": "Hike already priced; little change"
-  },
-  {
-   "date": "2026-11-10", "time": "08:30", "event": "US core CPI, October (m/m)", "tier": 3, "unit": "%",
-   "prev": 0.3, "expected": 0.2, "actual": 0.3, "tol": 0.05,
-   "if_higher": {"market": "Core is what the Fed watches: third 0.3% in a row = sticky inflation, hike bets firm", "meter": "+1 to +3", "tickers": "Rate-sensitive: XLU, XLRE, IWM, TLT down"},
-   "if_lower": {"market": "Fed can stop at one hike; relief for tech and biotech", "meter": "-1 to -2", "tickers": "QQQ, IBB, XBI up"},
-   "in_line": "Neutral"
-  },
-  {
-   "date": "2026-11-10", "time": "All day", "event": "Fed December hike odds (CME FedWatch, 25bp)", "tier": 2, "unit": "%",
-   "prev": 80, "expected": 80, "actual": 100, "tol": 5,
-   "if_higher": {"market": "Fully priced + Waller talking 50bp: 2-yr up, USD up, gold and long-duration tech down", "meter": "+1 to +3", "tickers": "GLD, SLV, QQQ down; UUP up"},
-   "if_lower": {"market": "Odds under 60% = market sees a pause; relief rally", "meter": "-2", "tickers": "GLD, QQQ, IWM up"},
+   "date": "2026-11-10",
+   "time": "All day",
+   "event": "Fed December hike odds (CME FedWatch, 25bp)",
+   "tier": 2,
+   "unit": "%",
+   "prev": 80,
+   "expected": 80,
+   "actual": 100,
+   "tol": 5,
+   "if_higher": {
+    "market": "Fully priced + Waller talking 50bp: 2-yr up, USD up, gold and long-duration tech down",
+    "meter": "+1 to +3",
+    "tickers": "GLD, SLV, QQQ down; UUP up"
+   },
+   "if_lower": {
+    "market": "Odds under 60% = market sees a pause; relief rally",
+    "meter": "-2",
+    "tickers": "GLD, QQQ, IWM up"
+   },
    "in_line": "No change"
   },
   {
-   "date": "2026-11-10", "time": "Pre-open", "event": "D-Wave (QBTS) Q3 results", "tier": 1, "unit": "",
-   "prev": null, "expected": null, "actual": null, "result": "reported",
+   "date": "2026-11-10",
+   "time": "08:30",
+   "event": "US CPI, October (headline, m/m)",
+   "tier": 3,
+   "unit": "%",
+   "prev": 0.6,
+   "expected": 0.3,
+   "actual": 0.4,
+   "tol": 0.05,
+   "if_higher": {
+    "market": "Dec 50bp hike back in play; 10-yr up, USD up; Nasdaq -1 to -2%, gold -1%, silver -2%",
+    "meter": "+2 to +4 (sentiment, trend) - can tip Green into Yellow (30)",
+    "tickers": "QQQ, SMH, NVDA, GLD, SLV, TLT down; UUP up"
+   },
+   "if_lower": {
+    "market": "25bp hike only or a pause; yields down; growth stocks and metals up",
+    "meter": "-2 (sentiment eases)",
+    "tickers": "QQQ, IBB, IWM, GLD up"
+   },
+   "in_line": "Hike already priced; little change"
+  },
+  {
+   "date": "2026-11-10",
+   "time": "08:30",
+   "event": "US core CPI, October (m/m)",
+   "tier": 3,
+   "unit": "%",
+   "prev": 0.3,
+   "expected": 0.2,
+   "actual": 0.3,
+   "tol": 0.05,
+   "if_higher": {
+    "market": "Core is what the Fed watches: third 0.3% in a row = sticky inflation, hike bets firm",
+    "meter": "+1 to +3",
+    "tickers": "Rate-sensitive: XLU, XLRE, IWM, TLT down"
+   },
+   "if_lower": {
+    "market": "Fed can stop at one hike; relief for tech and biotech",
+    "meter": "-1 to -2",
+    "tickers": "QQQ, IBB, XBI up"
+   },
+   "in_line": "Neutral"
+  },
+  {
+   "date": "2026-11-10",
+   "time": "Pre-open",
+   "event": "D-Wave (QBTS) Q3 results",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "result": "reported",
    "result_note": "Revenue $4.5M (+21%), GAAP EPS -$0.13; up to $100M CHIPS Act agreement signed",
-   "if_higher": {"market": "Beat = squeeze risk (19.6% of float short); about +15%", "meter": "0", "tickers": "QBTS, IONQ, RGTI up"},
-   "if_lower": {"market": "Miss = about -15%", "meter": "0", "tickers": "QBTS, IONQ, RGTI down"},
+   "if_higher": {
+    "market": "Beat = squeeze risk (19.6% of float short); about +15%",
+    "meter": "0",
+    "tickers": "QBTS, IONQ, RGTI up"
+   },
+   "if_lower": {
+    "market": "Miss = about -15%",
+    "meter": "0",
+    "tickers": "QBTS, IONQ, RGTI down"
+   },
    "in_line": ""
   },
   {
-   "date": "2026-11-10", "time": "After close", "event": "CoreWeave (CRWV) Q3 results", "tier": 2, "unit": "",
-   "prev": null, "expected": null, "actual": null,
-   "if_higher": {"market": "Strong backlog + funded capex = AI data-centre relief; peers +10-15%", "meter": "-1", "tickers": "CRWV, NBIS, IREN, VRT up"},
-   "if_lower": {"market": "Financing or political (moratorium) worries; peers -15%", "meter": "+1", "tickers": "CRWV, NBIS, IREN, VRT down"},
+   "date": "2026-11-10",
+   "time": "After close",
+   "event": "CoreWeave (CRWV) Q3 results",
+   "tier": 2,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Strong backlog + funded capex = AI data-centre relief; peers +10-15%",
+    "meter": "-1",
+    "tickers": "CRWV, NBIS, IREN, VRT up"
+   },
+   "if_lower": {
+    "market": "Financing or political (moratorium) worries; peers -15%",
+    "meter": "+1",
+    "tickers": "CRWV, NBIS, IREN, VRT down"
+   },
    "in_line": ""
   },
   {
-   "date": "2026-11-11", "time": "After close", "event": "Franco-Nevada (FNV) Q3 results", "tier": 1, "unit": "EPS $",
-   "prev": null, "expected": 1.77, "actual": null, "tol": 0.03,
-   "if_higher": {"market": "Options imply +/-7.45%; beat + Cobre Panama clarity = re-rate up", "meter": "0", "tickers": "FNV, WPM, RGLD up"},
-   "if_lower": {"market": "Miss = about -7%", "meter": "0", "tickers": "FNV, WPM, RGLD down"},
+   "date": "2026-11-11",
+   "time": "All day",
+   "event": "Veterans Day - US bond market closed, stocks open",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "result": "info",
+   "if_higher": null,
+   "if_lower": null,
+   "in_line": "Thin trading"
+  },
+  {
+   "date": "2026-11-11",
+   "time": "After close",
+   "event": "Franco-Nevada (FNV) Q3 results",
+   "tier": 1,
+   "unit": "EPS $",
+   "prev": null,
+   "expected": 1.77,
+   "actual": null,
+   "tol": 0.03,
+   "if_higher": {
+    "market": "Options imply +/-7.45%; beat + Cobre Panama clarity = re-rate up",
+    "meter": "0",
+    "tickers": "FNV, WPM, RGLD up"
+   },
+   "if_lower": {
+    "market": "Miss = about -7%",
+    "meter": "0",
+    "tickers": "FNV, WPM, RGLD down"
+   },
    "in_line": "Muted"
   },
   {
-   "date": "2026-11-11", "time": "All day", "event": "Veterans Day - US bond market closed, stocks open", "tier": 1, "unit": "",
-   "prev": null, "expected": null, "actual": null, "result": "info",
-   "if_higher": null, "if_lower": null, "in_line": "Thin trading"
-  },
-  {
-   "date": "2026-11-12", "time": "Pre-open", "event": "Nebius (NBIS) Q3 results", "tier": 2, "unit": "Rev $M",
-   "prev": null, "expected": 917, "actual": null, "tol": 15,
-   "if_higher": {"market": "Options imply +/-19%; 20.8% of float short = squeeze risk upward", "meter": "-1", "tickers": "NBIS, CRWV, IREN up"},
-   "if_lower": {"market": "About -19%; capex funding questions", "meter": "+1", "tickers": "NBIS, CRWV, IREN down"},
+   "date": "2026-11-12",
+   "time": "Pre-open",
+   "event": "Nebius (NBIS) Q3 results",
+   "tier": 2,
+   "unit": "Rev $M",
+   "prev": null,
+   "expected": 917,
+   "actual": null,
+   "tol": 15,
+   "if_higher": {
+    "market": "Options imply +/-19%; 20.8% of float short = squeeze risk upward",
+    "meter": "-1",
+    "tickers": "NBIS, CRWV, IREN up"
+   },
+   "if_lower": {
+    "market": "About -19%; capex funding questions",
+    "meter": "+1",
+    "tickers": "NBIS, CRWV, IREN down"
+   },
    "in_line": "Muted"
   },
   {
-   "date": "2026-11-13", "time": "08:30", "event": "US PPI, October", "tier": 2, "unit": "%",
-   "prev": null, "expected": null, "actual": null,
-   "if_higher": {"market": "Confirms hot CPI; 50bp odds up", "meter": "+1 to +2", "tickers": "QQQ, GLD, TLT down"},
-   "if_lower": {"market": "Eases 50bp fears", "meter": "-1", "tickers": "QQQ, IWM up"},
+   "date": "2026-11-13",
+   "time": "08:30",
+   "event": "US PPI, October",
+   "tier": 2,
+   "unit": "%",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Confirms hot CPI; 50bp odds up",
+    "meter": "+1 to +2",
+    "tickers": "QQQ, GLD, TLT down"
+   },
+   "if_lower": {
+    "market": "Eases 50bp fears",
+    "meter": "-1",
+    "tickers": "QQQ, IWM up"
+   },
+   "in_line": "",
+   "result": "reported",
+   "result_note": "Released 13 Nov. Actual not captured in this file."
+  },
+  {
+   "date": "2026-11-16",
+   "time": "08:30",
+   "event": "Canada CPI, October",
+   "tier": 2,
+   "unit": "% y/y",
+   "prev": 3.1,
+   "expected": 3.2,
+   "actual": 3.1,
+   "if_higher": {
+    "market": "BoC 9 Dec hike odds up; CAD up; banks and utilities soft",
+    "meter": "+1",
+    "tickers": "XIU, RY, FTS down; FXC up"
+   },
+   "if_lower": {
+    "market": "BoC can pause on 9 Dec; CAD down; TSX banks up",
+    "meter": "-1",
+    "tickers": "XIU, RY, FTS up"
+   },
+   "in_line": "Muted",
+   "tol": 0.05
+  },
+  {
+   "date": "2026-11-16",
+   "time": "12:00",
+   "event": "Fed Chair Warsh opening remarks",
+   "tier": 2,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": null,
+   "if_lower": null,
+   "in_line": "Tone on the December decision; hawkish = yields and USD up, tech and metals down",
+   "result": "info"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "All day",
+   "event": "Fed Governor Waller speaks",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": null,
+   "if_lower": null,
+   "in_line": "Watch 50bp talk",
+   "result": "info"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "08:30",
+   "event": "US retail sales, October",
+   "tier": 3,
+   "unit": "%",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Strong consumer + 10y above 5.1%: hike odds up; Nasdaq and gold down",
+    "meter": "+1 to +3",
+    "tickers": "QQQ, SMH, GLD down; UUP up"
+   },
+   "if_lower": {
+    "market": "Soft consumer: growth worry but yields ease; defensives and gold up",
+    "meter": "-1 to +1",
+    "tickers": "XLU, GLD, TLT up"
+   },
    "in_line": ""
   },
   {
-   "date": "2026-11-16", "time": "08:30", "event": "Canada CPI, October", "tier": 2, "unit": "%",
-   "prev": null, "expected": null, "actual": null,
-   "if_higher": {"market": "Bank of Canada 9 Dec hike odds up; CAD up; banks and utilities soft", "meter": "+1", "tickers": "XIU, RY, FTS down; FXC up"},
-   "if_lower": {"market": "BoC can pause; CAD down; TSX banks up", "meter": "-1", "tickers": "XIU, RY, FTS up"},
+   "date": "2026-11-17",
+   "time": "Pre-open",
+   "event": "Home Depot and Disney Q3 results",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Beat = consumer and housing relief",
+    "meter": "-1",
+    "tickers": "HD, DIS, XHB up"
+   },
+   "if_lower": {
+    "market": "Miss = consumer worry, 10y above 5% already",
+    "meter": "+1",
+    "tickers": "HD, DIS down"
+   },
    "in_line": ""
   },
   {
-   "date": "2026-11-17", "time": "After close", "event": "NVIDIA Q3 earnings", "tier": 3, "unit": "",
-   "prev": null, "expected": null, "actual": null,
-   "if_higher": {"market": "Options imply +/-10-13%; beat + CEO probe contained = AI relief rally", "meter": "-3 to -5", "tickers": "NVDA, SMH, AVGO, TSM, MU up"},
-   "if_lower": {"market": "Guide miss or probe widens: NVDA -10-13%, semis follow", "meter": "+3 to +5 - Yellow likely", "tickers": "NVDA, SMH, AVGO, TSM, MU down"},
+   "date": "2026-11-17",
+   "time": "After close",
+   "event": "NVIDIA Q3 earnings",
+   "tier": 3,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Options imply +/-10-13%; beat + CEO probe contained = AI relief rally",
+    "meter": "-3 to -5",
+    "tickers": "NVDA, SMH, AVGO, TSM, MU up"
+   },
+   "if_lower": {
+    "market": "Guide miss or probe widens: NVDA -10-13%, semis follow",
+    "meter": "+3 to +5 - Yellow likely",
+    "tickers": "NVDA, SMH, AVGO, TSM, MU down"
+   },
    "in_line": "Muted"
+  },
+  {
+   "date": "2026-11-18",
+   "time": "08:30",
+   "event": "US housing starts, October",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Strong = growth intact, yields firm",
+    "meter": "0 to +1",
+    "tickers": "XHB, ITB"
+   },
+   "if_lower": {
+    "market": "Weak = rate-sensitive pain",
+    "meter": "0",
+    "tickers": "XHB, ITB down"
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-18",
+   "time": "Pre-open",
+   "event": "Target, Lowe's and TJX Q3 results",
+   "tier": 2,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Beat = retail relief",
+    "meter": "-1",
+    "tickers": "TGT, LOW, TJX up"
+   },
+   "if_lower": {
+    "market": "Miss/weak guide = consumer slowdown fear",
+    "meter": "+1",
+    "tickers": "TGT, LOW, TJX down"
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-18",
+   "time": "14:00",
+   "event": "FOMC minutes (27-28 Oct meeting)",
+   "tier": 3,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Hawkish: December hike/50bp discussed; yields, USD up; tech and metals down",
+    "meter": "+2 to +3",
+    "tickers": "QQQ, SMH, GLD, SLV down; UUP up"
+   },
+   "if_lower": {
+    "market": "Dovish: pause debate; relief rally",
+    "meter": "-2",
+    "tickers": "QQQ, GLD, IWM up"
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-18",
+   "time": "After close",
+   "event": "Palo Alto Networks results; Anthropic IPO prices",
+   "tier": 3,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Anthropic prices at or above $70-78 range: AI risk appetite up; below range or cut = AI sentiment hit",
+    "meter": "-1 to -2 / +2 to +3",
+    "tickers": "SMH, NVDA, MSFT, GOOG, AMZN"
+   },
+   "if_lower": {
+    "market": "Priced below range or delayed: AI-bubble fears",
+    "meter": "+2 to +3",
+    "tickers": "SMH, NVDA, MU down"
+   },
+   "in_line": "Pricing reported after the close"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "08:30",
+   "event": "US jobless claims and Philadelphia Fed survey",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Strong labour: hike odds up",
+    "meter": "+1",
+    "tickers": "QQQ down"
+   },
+   "if_lower": {
+    "market": "Weak labour: growth fears",
+    "meter": "0 to +1",
+    "tickers": ""
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-19",
+   "time": "Pre-open",
+   "event": "Walmart and Ross Stores Q3 results",
+   "tier": 2,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Beat = consumer holding up",
+    "meter": "-1",
+    "tickers": "WMT, COST, ROST up"
+   },
+   "if_lower": {
+    "market": "Miss/cut = consumer stress",
+    "meter": "+1",
+    "tickers": "WMT, ROST down"
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-19",
+   "time": "09:30",
+   "event": "Anthropic first trading day",
+   "tier": 3,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Strong debut = AI trade confirmed",
+    "meter": "-1",
+    "tickers": "SMH, NVDA, MSFT, GOOG, AMZN up"
+   },
+   "if_lower": {
+    "market": "Weak debut = AI funding worry",
+    "meter": "+1 to +2",
+    "tickers": "SMH, NVDA down"
+   },
+   "in_line": ""
+  },
+  {
+   "date": "2026-11-20",
+   "time": "All day",
+   "event": "Waller speaks; BJ's results; SWAP/week close",
+   "tier": 1,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": null,
+   "if_lower": null,
+   "in_line": "",
+   "result": "info"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "10:00",
+   "event": "University of Michigan consumer sentiment (final, Nov)",
+   "tier": 2,
+   "unit": "",
+   "prev": null,
+   "expected": null,
+   "actual": null,
+   "if_higher": {
+    "market": "Higher sentiment/lower inflation expectations: relief",
+    "meter": "-1",
+    "tickers": "QQQ up"
+   },
+   "if_lower": {
+    "market": "Lower: stagflation worry",
+    "meter": "+1",
+    "tickers": "QQQ down"
+   },
+   "in_line": ""
   }
  ]
 }

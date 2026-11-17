@@ -204,14 +204,29 @@ function history(h) {
 // ---------------------------------------------------------------- agenda (docs/data/agenda.json)
 let AG = null, agMode = 'today';
 const etDay = (d = new Date()) => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(d);
+// ET wall-clock -> epoch ms (handles EST/EDT)
+function etEpoch(date, hh, mm) {
+  const [y, mo, d] = date.split('-').map(Number); let t = Date.UTC(y, mo - 1, d, hh, mm);
+  for (let i = 0; i < 2; i++) {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).formatToParts(new Date(t)).map((x) => [x.type, x.value]));
+    t += Date.UTC(y, mo - 1, d, hh, mm) - Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute);
+  } return t;
+}
+function dueAt(e) {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(e.time || '');
+  if (m) return etEpoch(e.date, +m[1], +m[2]) + 30 * 60000;      // 30 min after the release time
+  if (e.time === 'Pre-open') return etEpoch(e.date, 9, 30);
+  if (e.time === 'After close') return etEpoch(e.date, 17, 30);
+  return etEpoch(e.date, 23, 59);
+}
 function outcome(e) {
   if (e.result) return e.result;
-  if (e.actual == null || e.expected == null) return 'pending';
+  if (e.actual == null || e.expected == null) return Date.now() > dueAt(e) ? 'overdue' : 'pending';
   const d = e.actual - e.expected, tol = e.tol ?? 0;
   return d > tol ? 'higher' : d < -tol ? 'lower' : 'inline';
 }
 const RES = { higher: ['Above expected', 'var(--bad)'], lower: ['Below expected', 'var(--ok)'], inline: ['In line', 'var(--muted)'],
-  pending: ['Waiting', 'var(--warn)'], reported: ['Reported', 'var(--accent)'], info: ['Info', 'var(--muted)'] };
+  pending: ['Waiting', 'var(--warn)'], overdue: ['Released - data pending', 'var(--hot)'], reported: ['Reported', 'var(--accent)'], info: ['Info', 'var(--muted)'] };
 function scen(title, s, cls) {
   if (!s) return null;
   const h = el('h3', { textContent: title }); if (cls === 'hit') h.append(el('span', { className: 'tag', textContent: 'HAPPENED' }));
@@ -240,9 +255,12 @@ function renderAgenda() {
   if (!AG) { $('agsum').textContent = 'No agenda file yet.'; return; }
   const today = etDay(), end = etDay(new Date(Date.now() + 7 * 864e5));
   const evs = AG.events.filter((e) => agMode === 'today' ? e.date === today : e.date >= today && e.date <= end);
-  const todays = AG.events.filter((e) => e.date === today), done = todays.filter((e) => !['pending'].includes(outcome(e)));
+  const todays = AG.events.filter((e) => e.date === today), done = todays.filter((e) => !['pending', 'overdue'].includes(outcome(e)));
   const hot = todays.filter((e) => outcome(e) === 'higher').length;
-  $('agsum').textContent = `${todays.length} events today, ${done.length} out` + (hot ? `, ${hot} above expectations` : '') + `. Agenda updated ${AG.updated}.`;
+  const um = /^(\d{4}-\d{2}-\d{2}) (\d{2}):(\d{2})/.exec(AG.updated || ''); const agAge = um ? (Date.now() - etEpoch(um[1], +um[2], +um[3])) / 36e5 : 999;
+  const late = todays.filter((e) => outcome(e) === 'overdue').length;
+  $('agsum').textContent = `${todays.length} events today, ${done.length} out` + (late ? `, ${late} released but data not yet entered` : '') + (hot ? `, ${hot} above expectations` : '') + `. Agenda updated ${AG.updated}` + (agAge > 36 ? ` - STALE: ${Math.round(agAge / 24)} days old, do not rely on it` : '') + '.';
+  $('agsum').style.color = agAge > 36 ? 'var(--bad)' : '';
   if (!evs.length) { box.append(el('div', { className: 'muted', textContent: 'Nothing scheduled.' })); return; }
   let last = '';
   evs.forEach((e) => {
@@ -294,7 +312,7 @@ async function load() {
 }
 $('reload').addEventListener('click', load);
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(load, 250); });
-load(); setInterval(load, 5 * 60 * 1000);
+load(); setInterval(load, 5 * 60 * 1000); setInterval(() => { if (AG) renderAgenda(); }, 60 * 1000);
 </script>
 </body>
 </html>
