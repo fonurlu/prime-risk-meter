@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-18 02:50 ET",
- "updated_iso": "2026-11-18T02:50:33.605499-05:00",
+ "updated": "2026-11-18 03:05 ET",
+ "updated_iso": "2026-11-18T03:05:34.272917-05:00",
  "gauge": 32,
  "zone": "Yellow",
  "contrarian": true,
@@ -28,7 +28,7 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 61.7
+   "score": 61.8
   }
  ],
  "horizon": [
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 10.98,
+   "value": 10.93,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 18 Nov 02:40 ET",
+   "source": "Yahoo HG=F/GC=F 18 Nov 02:55 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -338,10 +338,10 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 25.2,
+   "value": 24.7,
    "benign": 75,
    "danger": 5,
-   "score": 71.1,
+   "score": 71.9,
    "source": "CNN 17 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
