@@ -10,21 +10,22 @@
    "issue": 5,
    "since": "2026-11-17 07:20 ET"
   },
-  "line:i15": {
-   "msg": "S&P 500 below its 200-day: now -0.05.",
-   "issue": 9,
-   "since": "2026-11-18 07:10 ET"
-  },
   "zone:Yellow": {
    "msg": "PRIME Risk Gauge is in the Yellow zone (31).",
    "issue": 9,
    "since": "2026-11-18 07:10 ET"
+  },
+  "line:i23": {
+   "msg": "VIX above 3-month VIX (panic): now 1.022.",
+   "issue": 11,
+   "since": "2026-11-18 10:00 ET"
   }
  },
  "sent_today": {
   "line:i15": "2026-11-18 07:10 ET",
   "zone:Yellow": "2026-11-18 07:10 ET",
-  "ind:i25": "2026-11-18 09:30 ET"
+  "ind:i25": "2026-11-18 09:30 ET",
+  "line:i23": "2026-11-18 10:00 ET"
  },
  "day": "2026-11-18"
 }
