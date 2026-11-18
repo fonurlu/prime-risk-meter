@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-18 03:05 ET",
- "updated_iso": "2026-11-18T03:05:34.272917-05:00",
+ "updated": "2026-11-18 03:20 ET",
+ "updated_iso": "2026-11-18T03:20:33.526882-05:00",
  "gauge": 32,
  "zone": "Yellow",
  "contrarian": true,
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 50.3,
-   "source": "Yahoo ^GSPC 17 Nov 16:42 ET",
+   "source": "Yahoo ^GSPC 17 Nov 16:00 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 30.6,
-   "source": "Yahoo ^GSPC 17 Nov 16:42 ET",
+   "source": "Yahoo ^GSPC 17 Nov 16:00 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 10.93,
+   "value": 10.2,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 18 Nov 02:55 ET",
+   "source": "Yahoo HG=F/GC=F 18 Nov 03:10 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
