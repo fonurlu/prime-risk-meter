@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-17 11:36 ET",
+ "updated": "2026-11-18 08:46 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -393,7 +393,7 @@
    "unit": "k",
    "prev": 1221,
    "expected": 1240,
-   "actual": null,
+   "actual": 1309.0,
    "if_higher": {
     "market": "Strong = growth intact, yields firm",
     "meter": "0 to +1",
@@ -405,7 +405,8 @@
     "tickers": "XHB, ITB down"
    },
    "in_line": "",
-   "tol": 20
+   "tol": 20,
+   "actual_src": "FRED HOUST 2026-10, auto 18 Nov 08:46 ET"
   },
   {
    "date": "2026-11-18",
@@ -615,6 +616,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-18 08:31 ET",
+ "auto_checked": "2026-11-18 08:46 ET",
  "auto_errors": []
 }
