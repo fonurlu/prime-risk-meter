@@ -14,11 +14,6 @@
    "msg": "PRIME Risk Gauge is in the Yellow zone (31).",
    "issue": 9,
    "since": "2026-11-18 07:10 ET"
-  },
-  "line:i23": {
-   "msg": "VIX above 3-month VIX (panic): now 1.022.",
-   "issue": 11,
-   "since": "2026-11-18 10:00 ET"
   }
  },
  "sent_today": {
