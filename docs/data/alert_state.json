@@ -19,11 +19,6 @@
    "msg": "PRIME Risk Gauge is in the Yellow zone (31).",
    "issue": 9,
    "since": "2026-11-18 07:10 ET"
-  },
-  "ind:i25": {
-   "msg": "CNN Fear & Greed (0-100) = 25.7 (score 70/100). Below 25 = extreme fear.",
-   "issue": 10,
-   "since": "2026-11-18 09:30 ET"
   }
  },
  "sent_today": {

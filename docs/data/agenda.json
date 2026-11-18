@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-18 08:46 ET",
+ "updated": "2026-11-18 09:45 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -383,7 +383,9 @@
     "meter": "+1",
     "tickers": "TGT, LOW, TJX down"
    },
-   "in_line": ""
+   "in_line": "",
+   "result": "reported",
+   "result_note": "Share reaction vs prior close (auto, 18 Nov 09:45 ET): TGT +5.0%, LOW -0.9%, TJX +8.3%. Results detail: company release."
   },
   {
    "date": "2026-11-18",
@@ -616,6 +618,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-18 09:30 ET",
+ "auto_checked": "2026-11-18 09:45 ET",
  "auto_errors": []
 }
