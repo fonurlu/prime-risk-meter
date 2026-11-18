@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-18 07:25 ET",
- "updated_iso": "2026-11-18T07:25:42.351623-05:00",
+ "updated": "2026-11-18 07:40 ET",
+ "updated_iso": "2026-11-18T07:40:41.681522-05:00",
  "gauge": 31,
  "zone": "Yellow",
  "contrarian": true,
@@ -28,7 +28,7 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 56.7
+   "score": 56.6
   }
  ],
  "horizon": [
@@ -282,7 +282,7 @@
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 18 Nov 07:15 ET",
+   "source": "Yahoo HG=F/GC=F 18 Nov 07:30 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 24.29,
+   "value": 24.26,
    "benign": 14,
    "danger": 35,
-   "score": 49.0,
-   "source": "Yahoo ^VIX 18 Nov 07:10 ET",
+   "score": 48.9,
+   "source": "Yahoo ^VIX 18 Nov 07:25 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 0.972,
+   "value": 0.971,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 48.8,
-   "source": "Yahoo ^VIX/^VIX3M 18 Nov 07:10 ET",
+   "score": 48.4,
+   "source": "Yahoo ^VIX/^VIX3M 18 Nov 07:25 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
