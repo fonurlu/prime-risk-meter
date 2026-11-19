@@ -1,10 +1,10 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-19 03:27 ET",
- "updated_iso": "2026-11-19T03:27:14.066790-05:00",
- "gauge": 34,
+ "updated": "2026-11-19 03:42 ET",
+ "updated_iso": "2026-11-19T03:42:14.374903-05:00",
+ "gauge": 32,
  "zone": "Yellow",
- "contrarian": true,
+ "contrarian": false,
  "pillars": [
   {
    "key": "macro",
@@ -28,13 +28,13 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 60.7
+   "score": 49.2
   }
  ],
  "horizon": [
   {
    "name": "Correction (-10%) within 3 months",
-   "score": 46
+   "score": 41
   },
   {
    "name": "Bear market (-20%) within 6 months",
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 10.34,
+   "value": 10.32,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 19 Nov 03:17 ET",
+   "source": "Yahoo HG=F/GC=F 19 Nov 03:32 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 24.56,
+   "value": 22.06,
    "benign": 14,
    "danger": 35,
-   "score": 50.3,
-   "source": "Yahoo ^VIX 18 Nov 16:15 ET",
+   "score": 38.4,
+   "source": "Yahoo ^VIX 19 Nov 03:27 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.011,
+   "value": 0.908,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 64.4,
-   "source": "Yahoo ^VIX/^VIX3M 18 Nov 16:15 ET",
+   "score": 23.2,
+   "source": "Yahoo ^VIX/^VIX3M 19 Nov 03:27 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -338,11 +338,11 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 23.5,
+   "value": 26.5,
    "benign": 75,
    "danger": 5,
-   "score": 73.6,
-   "source": "CNN 18 Nov",
+   "score": 69.3,
+   "source": "CNN 19 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
   },
