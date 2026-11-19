@@ -19,11 +19,23 @@
    "msg": "VIX above 3-month VIX (panic): now 1.002.",
    "issue": 13,
    "since": "2026-11-19 10:33 ET"
+  },
+  "ind:i23": {
+   "msg": "VIX / 3-month VIX = 1.044 (score 78/100). Above 1 = panic right now.",
+   "issue": 14,
+   "since": "2026-11-19 10:54 ET"
+  },
+  "ind:i25": {
+   "msg": "CNN Fear & Greed (0-100) = 23.0 (score 74/100). Below 25 = extreme fear.",
+   "issue": 14,
+   "since": "2026-11-19 10:54 ET"
   }
  },
  "sent_today": {
   "line:i15": "2026-11-19 07:09 ET",
-  "line:i23": "2026-11-19 10:33 ET"
+  "line:i23": "2026-11-19 10:33 ET",
+  "ind:i23": "2026-11-19 10:54 ET",
+  "ind:i25": "2026-11-19 10:54 ET"
  },
  "day": "2026-11-19"
 }
