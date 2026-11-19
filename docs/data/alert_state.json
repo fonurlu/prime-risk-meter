@@ -14,11 +14,6 @@
    "msg": "PRIME Risk Gauge is in the Yellow zone (31).",
    "issue": 9,
    "since": "2026-11-18 07:10 ET"
-  },
-  "line:i15": {
-   "msg": "S&P 500 below its 200-day: now -0.31.",
-   "issue": 12,
-   "since": "2026-11-19 07:09 ET"
   }
  },
  "sent_today": {
