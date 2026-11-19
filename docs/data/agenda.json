@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-19 08:48 ET",
+ "updated": "2026-11-19 09:48 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -450,7 +450,9 @@
     "meter": "+2 to +3",
     "tickers": "SMH, NVDA, MU down"
    },
-   "in_line": "Reports say 10-20x oversubscribed; an unofficial $70-80 range was retracted, so watch the final range. Listing expected 19 Nov (WSJ: 19 or 20 Nov)."
+   "in_line": "Reports say 10-20x oversubscribed; an unofficial $70-80 range was retracted, so watch the final range. Listing expected 19 Nov (WSJ: 19 or 20 Nov).",
+   "result": "reported",
+   "result_note": "Share reaction vs prior close (auto, 19 Nov 09:48 ET): PANW +7.0%. Results detail: company release."
   },
   {
    "date": "2026-11-19",
@@ -493,7 +495,9 @@
     "meter": "+1",
     "tickers": "WMT, ROST down"
    },
-   "in_line": ""
+   "in_line": "",
+   "result": "reported",
+   "result_note": "Share reaction vs prior close (auto, 19 Nov 09:48 ET): WMT -1.8%, ROST -0.8%. Results detail: company release."
   },
   {
    "date": "2026-11-19",
@@ -619,6 +623,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-19 09:33 ET",
+ "auto_checked": "2026-11-19 09:48 ET",
  "auto_errors": []
 }
