@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-18 18:51 ET",
- "updated_iso": "2026-11-18T18:51:23.923283-05:00",
+ "updated": "2026-11-18 19:06 ET",
+ "updated_iso": "2026-11-18T19:06:24.254693-05:00",
  "gauge": 34,
  "zone": "Yellow",
  "contrarian": true,
@@ -10,7 +10,7 @@
    "key": "macro",
    "name": "Macro / recession",
    "weight": 30,
-   "score": 28.0
+   "score": 28.2
   },
   {
    "key": "credit",
@@ -50,11 +50,11 @@
    "id": "i01",
    "pillar": "macro",
    "name": "Yield curve 10y-3m (%)",
-   "value": 0.77,
+   "value": 0.73,
    "benign": 1.5,
    "danger": -0.5,
-   "score": 36.5,
-   "source": "FRED T10Y3M 2026-11-17",
+   "score": 38.5,
+   "source": "FRED T10Y3M 2026-11-18",
    "stale": false,
    "why": "Inversion = recession in 6-18 months; un-inverting after an inversion is the late warning"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 9.5,
+   "value": 9.55,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 18 Nov 18:41 ET",
+   "source": "Yahoo HG=F/GC=F 18 Nov 18:56 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
