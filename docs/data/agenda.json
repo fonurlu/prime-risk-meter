@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-18 09:45 ET",
+ "updated": "2026-11-19 08:48 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -503,7 +503,7 @@
    "unit": "k",
    "prev": 200,
    "expected": 197,
-   "actual": null,
+   "actual": 203.0,
    "if_higher": {
     "market": "Strong labour: hike odds up",
     "meter": "+1",
@@ -515,7 +515,8 @@
     "tickers": ""
    },
    "in_line": "",
-   "tol": 5
+   "tol": 5,
+   "actual_src": "FRED ICSA 2026-11, auto 19 Nov 08:48 ET"
   },
   {
    "date": "2026-11-19",
@@ -618,6 +619,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-19 08:12 ET",
+ "auto_checked": "2026-11-19 08:48 ET",
  "auto_errors": []
 }
