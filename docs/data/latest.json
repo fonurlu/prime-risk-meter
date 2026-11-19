@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-19 16:04 ET",
- "updated_iso": "2026-11-19T16:04:41.194669-05:00",
+ "updated": "2026-11-19 16:19 ET",
+ "updated_iso": "2026-11-19T16:19:40.821814-05:00",
  "gauge": 38,
  "zone": "Yellow",
  "contrarian": true,
@@ -16,7 +16,7 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 22.5
+   "score": 22.7
   },
   {
    "key": "trend",
@@ -28,7 +28,7 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 69.2
+   "score": 70.2
   }
  ],
  "horizon": [
@@ -158,11 +158,11 @@
    "id": "i10",
    "pillar": "credit",
    "name": "Junk vs Treasuries, 3-month change (%)",
-   "value": -1.7,
+   "value": -1.75,
    "benign": 1.0,
    "danger": -5.0,
-   "score": 45.0,
-   "source": "Yahoo HYG/IEF 19 Nov 15:59 ET",
+   "score": 45.8,
+   "source": "Yahoo HYG/IEF 19 Nov 16:00 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
   },
@@ -194,11 +194,11 @@
    "id": "i13",
    "pillar": "credit",
    "name": "MOVE bond volatility",
-   "value": 96.04,
+   "value": 96.0,
    "benign": 80,
    "danger": 140,
    "score": 26.7,
-   "source": "Yahoo ^MOVE 19 Nov 15:47 ET",
+   "source": "Yahoo ^MOVE 19 Nov 16:02 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 64.6,
-   "source": "Yahoo ^GSPC 19 Nov 16:04 ET",
+   "source": "Yahoo ^GSPC 19 Nov 16:19 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 41.1,
-   "source": "Yahoo ^GSPC 19 Nov 16:04 ET",
+   "source": "Yahoo ^GSPC 19 Nov 16:19 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -246,7 +246,7 @@
    "benign": 0,
    "danger": -20,
    "score": 67.4,
-   "source": "Yahoo ^IXIC 19 Nov 16:04 ET",
+   "source": "Yahoo ^IXIC 19 Nov 16:19 ET",
    "stale": false,
    "why": "Health of the AI/tech leaders"
   },
@@ -254,11 +254,11 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 2.16,
+   "value": 2.12,
    "benign": 2,
    "danger": -5,
    "score": 0.0,
-   "source": "Yahoo RSP/SPY 19 Nov 15:59 ET",
+   "source": "Yahoo RSP/SPY 19 Nov 16:00 ET",
    "stale": false,
    "why": "A narrow market is fragile"
   },
@@ -266,11 +266,11 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": 1.21,
+   "value": 1.17,
    "benign": 8,
    "danger": -8,
-   "score": 42.4,
-   "source": "Yahoo RSP 19 Nov 15:59 ET",
+   "score": 42.7,
+   "source": "Yahoo RSP 19 Nov 16:00 ET",
    "stale": false,
    "why": "Breadth of the market"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 11.14,
+   "value": 11.25,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 19 Nov 15:54 ET",
+   "source": "Yahoo HG=F/GC=F 19 Nov 16:09 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -294,7 +294,7 @@
    "benign": 8,
    "danger": -8,
    "score": 63.6,
-   "source": "Yahoo ^GSPTSE 19 Nov 16:04 ET",
+   "source": "Yahoo ^GSPTSE 19 Nov 16:19 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 28.37,
+   "value": 29.03,
    "benign": 14,
    "danger": 35,
-   "score": 68.4,
-   "source": "Yahoo ^VIX 19 Nov 15:49 ET",
+   "score": 71.6,
+   "source": "Yahoo ^VIX 19 Nov 16:04 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.057,
+   "value": 1.059,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 82.8,
-   "source": "Yahoo ^VIX/^VIX3M 19 Nov 15:49 ET",
+   "score": 83.6,
+   "source": "Yahoo ^VIX/^VIX3M 19 Nov 16:04 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -338,10 +338,10 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 19.3,
+   "value": 18.5,
    "benign": 75,
    "danger": 5,
-   "score": 79.6,
+   "score": 80.7,
    "source": "CNN 19 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
