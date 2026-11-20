@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-19 09:48 ET",
+ "updated": "2026-11-20 09:45 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -563,7 +563,9 @@
     "meter": "0 to +1",
     "tickers": "INTU, IGV down"
    },
-   "in_line": ""
+   "in_line": "",
+   "result": "reported",
+   "result_note": "Share reaction vs prior close (auto, 20 Nov 09:45 ET): INTU -5.2%. Results detail: company release."
   },
   {
    "date": "2026-11-20",
@@ -623,6 +625,6 @@
    "in_line": ""
   }
  ],
- "auto_checked": "2026-11-20 09:30 ET",
+ "auto_checked": "2026-11-20 09:45 ET",
  "auto_errors": []
 }
