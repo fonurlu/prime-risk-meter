@@ -1,6 +1,6 @@
 {
  "_note": "Agenda for the risk meter page. One row per event. 'expected' = consensus; fill 'actual' when it is released and the page marks which scenario happened. tol = how far from expected still counts as 'in line'. 'tickers' = the names most affected. Page marks an event 'Released - data pending' once its time has passed with no actual, and shows a red STALE banner if this file is older than 36 hours. Refreshed by the scheduled Claude task (weekdays ~07:00, 12:00, 17:00 ET).",
- "updated": "2026-11-20 09:45 ET",
+ "updated": "2026-11-20 11:41 ET",
  "events": [
   {
    "date": "2026-11-10",
@@ -611,7 +611,7 @@
    "unit": "",
    "prev": null,
    "expected": null,
-   "actual": null,
+   "actual": 48.0,
    "if_higher": {
     "market": "Higher sentiment/lower inflation expectations: relief",
     "meter": "-1",
@@ -622,9 +622,10 @@
     "meter": "+1",
     "tickers": "QQQ down"
    },
-   "in_line": ""
+   "in_line": "",
+   "actual_src": "FRED UMCSENT 2026-10, auto 20 Nov 11:41 ET"
   }
  ],
- "auto_checked": "2026-11-20 11:26 ET",
+ "auto_checked": "2026-11-20 11:41 ET",
  "auto_errors": []
 }
