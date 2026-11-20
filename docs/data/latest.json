@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-19 19:25 ET",
- "updated_iso": "2026-11-19T19:25:23.191959-05:00",
+ "updated": "2026-11-19 19:55 ET",
+ "updated_iso": "2026-11-19T19:55:51.872875-05:00",
  "gauge": 38,
  "zone": "Yellow",
  "contrarian": true,
@@ -10,7 +10,7 @@
    "key": "macro",
    "name": "Macro / recession",
    "weight": 30,
-   "score": 28.6
+   "score": 28.8
   },
   {
    "key": "credit",
@@ -50,11 +50,11 @@
    "id": "i01",
    "pillar": "macro",
    "name": "Yield curve 10y-3m (%)",
-   "value": 0.73,
+   "value": 0.7,
    "benign": 1.5,
    "danger": -0.5,
-   "score": 38.5,
-   "source": "FRED T10Y3M 2026-11-18",
+   "score": 40.0,
+   "source": "FRED T10Y3M 2026-11-19",
    "stale": false,
    "why": "Inversion = recession in 6-18 months; un-inverting after an inversion is the late warning"
   },
@@ -282,7 +282,7 @@
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 19 Nov 19:15 ET",
+   "source": "Yahoo HG=F/GC=F 19 Nov 19:45 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
