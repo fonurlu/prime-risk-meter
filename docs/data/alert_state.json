@@ -34,6 +34,16 @@
    "msg": "S&P 500 below its 200-day: now -2.34.",
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
+  },
+  "ind:i15": {
+   "msg": "S&P 500 vs 200-day average (%) = -3.28 (score 70/100). Below the 200-day = bear trend.",
+   "issue": 19,
+   "since": "2026-11-20 10:25 ET"
+  },
+  "line:i17": {
+   "msg": "Nasdaq 15% below its high: now -15.23.",
+   "issue": 19,
+   "since": "2026-11-20 10:25 ET"
   }
  },
  "sent_today": {
@@ -41,7 +51,9 @@
   "ind:i23": "2026-11-20 07:09 ET",
   "line:i15": "2026-11-20 07:09 ET",
   "line:i22": "2026-11-20 07:24 ET",
-  "ind:i17": "2026-11-20 09:30 ET"
+  "ind:i17": "2026-11-20 09:30 ET",
+  "ind:i15": "2026-11-20 10:25 ET",
+  "line:i17": "2026-11-20 10:25 ET"
  },
  "day": "2026-11-20"
 }
