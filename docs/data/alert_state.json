@@ -40,17 +40,18 @@
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
   },
-  "line:i22": {
-   "msg": "VIX above 30: now 30.42.",
-   "issue": 17,
-   "since": "2026-11-20 07:24 ET"
+  "ind:i17": {
+   "msg": "Nasdaq drawdown from 1-yr high (%) = -14.54 (score 73/100). Health of the AI/tech leaders.",
+   "issue": 18,
+   "since": "2026-11-20 09:30 ET"
   }
  },
  "sent_today": {
   "ind:i22": "2026-11-20 07:09 ET",
   "ind:i23": "2026-11-20 07:09 ET",
   "line:i15": "2026-11-20 07:09 ET",
-  "line:i22": "2026-11-20 07:24 ET"
+  "line:i22": "2026-11-20 07:24 ET",
+  "ind:i17": "2026-11-20 09:30 ET"
  },
  "day": "2026-11-20"
 }
