@@ -25,11 +25,6 @@
    "issue": 14,
    "since": "2026-11-19 10:54 ET"
   },
-  "ind:i22": {
-   "msg": "VIX = 29.88 (score 76/100). Wall Street fear gauge.",
-   "issue": 16,
-   "since": "2026-11-20 07:09 ET"
-  },
   "ind:i23": {
    "msg": "VIX / 3-month VIX = 1.105 (score 100/100). Above 1 = panic right now.",
    "issue": 16,
@@ -39,11 +34,6 @@
    "msg": "S&P 500 below its 200-day: now -2.34.",
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
-  },
-  "ind:i17": {
-   "msg": "Nasdaq drawdown from 1-yr high (%) = -14.54 (score 73/100). Health of the AI/tech leaders.",
-   "issue": 18,
-   "since": "2026-11-20 09:30 ET"
   }
  },
  "sent_today": {
