@@ -44,6 +44,11 @@
    "msg": "Nasdaq 15% below its high: now -15.23.",
    "issue": 19,
    "since": "2026-11-20 10:25 ET"
+  },
+  "ind:i21": {
+   "msg": "TSX vs 200-day average (%) = -3.36 (score 71/100). Canadian market trend.",
+   "issue": 20,
+   "since": "2026-11-20 11:26 ET"
   }
  },
  "sent_today": {
@@ -53,7 +58,8 @@
   "line:i22": "2026-11-20 07:24 ET",
   "ind:i17": "2026-11-20 09:30 ET",
   "ind:i15": "2026-11-20 10:25 ET",
-  "line:i17": "2026-11-20 10:25 ET"
+  "line:i17": "2026-11-20 10:25 ET",
+  "ind:i21": "2026-11-20 11:26 ET"
  },
  "day": "2026-11-20"
 }
