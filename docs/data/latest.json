@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-20 21:31 ET",
- "updated_iso": "2026-11-20T21:31:10.960643-05:00",
+ "updated": "2026-11-20 21:46 ET",
+ "updated_iso": "2026-11-20T21:46:53.140355-05:00",
  "gauge": 46,
  "zone": "Yellow",
  "contrarian": true,
@@ -16,7 +16,7 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 29.2
+   "score": 28.9
   },
   {
    "key": "trend",
@@ -158,10 +158,10 @@
    "id": "i10",
    "pillar": "credit",
    "name": "Junk vs Treasuries, 3-month change (%)",
-   "value": -2.9,
+   "value": -2.81,
    "benign": 1.0,
    "danger": -5.0,
-   "score": 65.0,
+   "score": 63.5,
    "source": "Yahoo HYG/IEF 20 Nov 16:00 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
@@ -254,7 +254,7 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 3.88,
+   "value": 3.45,
    "benign": 2,
    "danger": -5,
    "score": 0.0,
@@ -266,10 +266,10 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": -0.82,
+   "value": -0.86,
    "benign": 8,
    "danger": -8,
-   "score": 55.1,
+   "score": 55.4,
    "source": "Yahoo RSP 20 Nov 16:00 ET",
    "stale": false,
    "why": "Breadth of the market"
