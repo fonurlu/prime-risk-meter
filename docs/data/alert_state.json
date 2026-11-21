@@ -49,8 +49,27 @@
    "msg": "TSX vs 200-day average (%) = -3.36 (score 71/100). Canadian market trend.",
    "issue": 20,
    "since": "2026-11-20 11:26 ET"
+  },
+  "ind:i17": {
+   "msg": "Nasdaq drawdown from 1-yr high (%) = -18.05 (score 90/100). Health of the AI/tech leaders.",
+   "issue": 21,
+   "since": "2026-11-21 07:00 ET"
+  },
+  "ind:i22": {
+   "msg": "VIX = 35.89 (score 100/100). Wall Street fear gauge.",
+   "issue": 21,
+   "since": "2026-11-21 07:00 ET"
+  },
+  "line:i22": {
+   "msg": "VIX above 30: now 35.89.",
+   "issue": 21,
+   "since": "2026-11-21 07:00 ET"
   }
  },
- "sent_today": {},
+ "sent_today": {
+  "ind:i17": "2026-11-21 07:00 ET",
+  "ind:i22": "2026-11-21 07:00 ET",
+  "line:i22": "2026-11-21 07:00 ET"
+ },
  "day": "2026-11-21"
 }
