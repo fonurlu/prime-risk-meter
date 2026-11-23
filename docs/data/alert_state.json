@@ -24,36 +24,6 @@
    "msg": "S&P 500 below its 200-day: now -2.34.",
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
-  },
-  "ind:i15": {
-   "msg": "S&P 500 vs 200-day average (%) = -3.28 (score 70/100). Below the 200-day = bear trend.",
-   "issue": 19,
-   "since": "2026-11-20 10:25 ET"
-  },
-  "line:i17": {
-   "msg": "Nasdaq 15% below its high: now -15.23.",
-   "issue": 19,
-   "since": "2026-11-20 10:25 ET"
-  },
-  "ind:i21": {
-   "msg": "TSX vs 200-day average (%) = -3.36 (score 71/100). Canadian market trend.",
-   "issue": 20,
-   "since": "2026-11-20 11:26 ET"
-  },
-  "ind:i17": {
-   "msg": "Nasdaq drawdown from 1-yr high (%) = -18.05 (score 90/100). Health of the AI/tech leaders.",
-   "issue": 21,
-   "since": "2026-11-21 07:00 ET"
-  },
-  "ind:i22": {
-   "msg": "VIX = 35.89 (score 100/100). Wall Street fear gauge.",
-   "issue": 21,
-   "since": "2026-11-21 07:00 ET"
-  },
-  "line:i22": {
-   "msg": "VIX above 30: now 30.23.",
-   "issue": 22,
-   "since": "2026-11-23 07:21 ET"
   }
  },
  "sent_today": {
