@@ -54,11 +54,6 @@
    "msg": "VIX above 30: now 30.23.",
    "issue": 22,
    "since": "2026-11-23 07:21 ET"
-  },
-  "line:i23": {
-   "msg": "VIX above 3-month VIX (panic): now 1.002.",
-   "issue": 23,
-   "since": "2026-11-23 07:36 ET"
   }
  },
  "sent_today": {
