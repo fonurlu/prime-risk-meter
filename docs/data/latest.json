@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-23 15:43 ET",
- "updated_iso": "2026-11-23T15:43:54.936889-05:00",
+ "updated": "2026-11-23 15:48 ET",
+ "updated_iso": "2026-11-23T15:48:26.023751-05:00",
  "gauge": 39,
  "zone": "Yellow",
  "contrarian": true,
@@ -16,7 +16,7 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 27.9
+   "score": 27.6
   },
   {
    "key": "trend",
@@ -28,17 +28,17 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 67.3
+   "score": 67.7
   }
  ],
  "horizon": [
   {
    "name": "Correction (-10%) within 3 months",
-   "score": 52
+   "score": 53
   },
   {
    "name": "Bear market (-20%) within 6 months",
-   "score": 33
+   "score": 32
   },
   {
    "name": "Recession within 12 months",
@@ -158,11 +158,11 @@
    "id": "i10",
    "pillar": "credit",
    "name": "Junk vs Treasuries, 3-month change (%)",
-   "value": -2.19,
+   "value": -2.17,
    "benign": 1.0,
    "danger": -5.0,
-   "score": 53.2,
-   "source": "Yahoo HYG/IEF 23 Nov 15:43 ET",
+   "score": 52.8,
+   "source": "Yahoo HYG/IEF 23 Nov 15:48 ET",
    "stale": false,
    "why": "Junk bonds lagging Treasuries = risk-off"
   },
@@ -194,11 +194,11 @@
    "id": "i13",
    "pillar": "credit",
    "name": "MOVE bond volatility",
-   "value": 102.01,
+   "value": 101.44,
    "benign": 80,
    "danger": 140,
-   "score": 36.7,
-   "source": "Yahoo ^MOVE 23 Nov 15:17 ET",
+   "score": 35.7,
+   "source": "Yahoo ^MOVE 23 Nov 15:32 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -218,11 +218,11 @@
    "id": "i15",
    "pillar": "trend",
    "name": "S&P 500 vs 200-day average (%)",
-   "value": -1.22,
+   "value": -1.25,
    "benign": 8,
    "danger": -8,
-   "score": 57.6,
-   "source": "Yahoo ^GSPC 23 Nov 15:43 ET",
+   "score": 57.8,
+   "source": "Yahoo ^GSPC 23 Nov 15:48 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -230,11 +230,11 @@
    "id": "i16",
    "pillar": "trend",
    "name": "S&P 500 drawdown from 1-yr high (%)",
-   "value": -7.14,
+   "value": -7.17,
    "benign": 0,
    "danger": -20,
-   "score": 35.7,
-   "source": "Yahoo ^GSPC 23 Nov 15:43 ET",
+   "score": 35.9,
+   "source": "Yahoo ^GSPC 23 Nov 15:48 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -242,11 +242,11 @@
    "id": "i17",
    "pillar": "trend",
    "name": "Nasdaq drawdown from 1-yr high (%)",
-   "value": -12.38,
+   "value": -12.45,
    "benign": 0,
    "danger": -20,
-   "score": 61.9,
-   "source": "Yahoo ^IXIC 23 Nov 15:43 ET",
+   "score": 62.2,
+   "source": "Yahoo ^IXIC 23 Nov 15:48 ET",
    "stale": false,
    "why": "Health of the AI/tech leaders"
   },
@@ -254,11 +254,11 @@
    "id": "i18",
    "pillar": "trend",
    "name": "Equal-weight vs cap-weight S&P, 3m (%)",
-   "value": 1.59,
+   "value": 1.62,
    "benign": 2,
    "danger": -5,
-   "score": 5.9,
-   "source": "Yahoo RSP/SPY 23 Nov 15:43 ET",
+   "score": 5.4,
+   "source": "Yahoo RSP/SPY 23 Nov 15:48 ET",
    "stale": false,
    "why": "A narrow market is fragile"
   },
@@ -266,11 +266,11 @@
    "id": "i19",
    "pillar": "trend",
    "name": "Equal-weight S&P vs 200-day (%)",
-   "value": 1.81,
+   "value": 1.82,
    "benign": 8,
    "danger": -8,
-   "score": 38.7,
-   "source": "Yahoo RSP 23 Nov 15:43 ET",
+   "score": 38.6,
+   "source": "Yahoo RSP 23 Nov 15:48 ET",
    "stale": false,
    "why": "Breadth of the market"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 9.39,
+   "value": 9.37,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 23 Nov 15:33 ET",
+   "source": "Yahoo HG=F/GC=F 23 Nov 15:38 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -290,11 +290,11 @@
    "id": "i21",
    "pillar": "trend",
    "name": "TSX vs 200-day average (%)",
-   "value": -1.88,
+   "value": -1.9,
    "benign": 8,
    "danger": -8,
-   "score": 61.7,
-   "source": "Yahoo ^GSPTSE 23 Nov 15:43 ET",
+   "score": 61.9,
+   "source": "Yahoo ^GSPTSE 23 Nov 15:48 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 26.7,
+   "value": 26.87,
    "benign": 14,
    "danger": 35,
-   "score": 60.5,
-   "source": "Yahoo ^VIX 23 Nov 15:28 ET",
+   "score": 61.3,
+   "source": "Yahoo ^VIX 23 Nov 15:33 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.047,
+   "value": 1.05,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 78.8,
-   "source": "Yahoo ^VIX/^VIX3M 23 Nov 15:28 ET",
+   "score": 80.0,
+   "source": "Yahoo ^VIX/^VIX3M 23 Nov 15:33 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
