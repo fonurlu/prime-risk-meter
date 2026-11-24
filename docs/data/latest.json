@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-24 03:24 ET",
- "updated_iso": "2026-11-24T03:24:49.407100-05:00",
+ "updated": "2026-11-24 03:39 ET",
+ "updated_iso": "2026-11-24T03:39:49.464501-05:00",
  "gauge": 39,
  "zone": "Yellow",
  "contrarian": true,
@@ -28,13 +28,13 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 67.1
+   "score": 66.1
   }
  ],
  "horizon": [
   {
    "name": "Correction (-10%) within 3 months",
-   "score": 53
+   "score": 52
   },
   {
    "name": "Bear market (-20%) within 6 months",
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 7.07,
+   "value": 7.09,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 24 Nov 03:14 ET",
+   "source": "Yahoo HG=F/GC=F 24 Nov 03:29 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 26.62,
+   "value": 26.43,
    "benign": 14,
    "danger": 35,
-   "score": 60.1,
-   "source": "Yahoo ^VIX 23 Nov 16:15 ET",
+   "score": 59.2,
+   "source": "Yahoo ^VIX 24 Nov 03:24 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.044,
+   "value": 1.036,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 77.6,
-   "source": "Yahoo ^VIX/^VIX3M 23 Nov 16:15 ET",
+   "score": 74.4,
+   "source": "Yahoo ^VIX/^VIX3M 24 Nov 03:24 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -338,11 +338,11 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 17.1,
+   "value": 17.6,
    "benign": 75,
    "danger": 5,
-   "score": 82.7,
-   "source": "CNN 23 Nov",
+   "score": 82.0,
+   "source": "CNN 24 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
   },
