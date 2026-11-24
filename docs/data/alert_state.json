@@ -39,12 +39,18 @@
    "msg": "VIX = 29.22 (score 72/100). Wall Street fear gauge.",
    "issue": 26,
    "since": "2026-11-24 07:39 ET"
+  },
+  "ind:i17": {
+   "msg": "Nasdaq drawdown from 1-yr high (%) = -14.25 (score 71/100). Health of the AI/tech leaders.",
+   "issue": 28,
+   "since": "2026-11-24 09:36 ET"
   }
  },
  "sent_today": {
   "line:i23": "2026-11-24 07:09 ET",
   "ind:i22": "2026-11-24 07:39 ET",
-  "line:i22": "2026-11-24 08:23 ET"
+  "line:i22": "2026-11-24 08:23 ET",
+  "ind:i17": "2026-11-24 09:36 ET"
  },
  "day": "2026-11-24"
 }
