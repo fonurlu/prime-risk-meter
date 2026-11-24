@@ -29,8 +29,15 @@
    "msg": "VIX / 3-month VIX = 1.103 (score 100/100). Above 1 = panic right now.",
    "issue": 24,
    "since": "2026-11-23 09:54 ET"
+  },
+  "line:i23": {
+   "msg": "VIX above 3-month VIX (panic): now 1.109.",
+   "issue": 25,
+   "since": "2026-11-24 07:09 ET"
   }
  },
- "sent_today": {},
+ "sent_today": {
+  "line:i23": "2026-11-24 07:09 ET"
+ },
  "day": "2026-11-24"
 }
