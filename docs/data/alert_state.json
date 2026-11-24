@@ -39,11 +39,17 @@
    "msg": "VIX = 29.22 (score 72/100). Wall Street fear gauge.",
    "issue": 26,
    "since": "2026-11-24 07:39 ET"
+  },
+  "line:i22": {
+   "msg": "VIX above 30: now 32.38.",
+   "issue": 27,
+   "since": "2026-11-24 08:23 ET"
   }
  },
  "sent_today": {
   "line:i23": "2026-11-24 07:09 ET",
-  "ind:i22": "2026-11-24 07:39 ET"
+  "ind:i22": "2026-11-24 07:39 ET",
+  "line:i22": "2026-11-24 08:23 ET"
  },
  "day": "2026-11-24"
 }
