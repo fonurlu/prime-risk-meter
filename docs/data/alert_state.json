@@ -34,8 +34,27 @@
    "msg": "VIX above 3-month VIX (panic): now 1.109.",
    "issue": 25,
    "since": "2026-11-24 07:09 ET"
+  },
+  "ind:i17": {
+   "msg": "Nasdaq drawdown from 1-yr high (%) = -14.01 (score 70/100). Health of the AI/tech leaders.",
+   "issue": 29,
+   "since": "2026-11-25 07:12 ET"
+  },
+  "ind:i22": {
+   "msg": "VIX = 30.5 (score 79/100). Wall Street fear gauge.",
+   "issue": 29,
+   "since": "2026-11-25 07:12 ET"
+  },
+  "line:i22": {
+   "msg": "VIX above 30: now 30.5.",
+   "issue": 29,
+   "since": "2026-11-25 07:12 ET"
   }
  },
- "sent_today": {},
+ "sent_today": {
+  "ind:i17": "2026-11-25 07:12 ET",
+  "ind:i22": "2026-11-25 07:12 ET",
+  "line:i22": "2026-11-25 07:12 ET"
+ },
  "day": "2026-11-25"
 }
