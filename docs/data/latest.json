@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-25 17:39 ET",
- "updated_iso": "2026-11-25T17:39:45.259999-05:00",
+ "updated": "2026-11-25 17:51 ET",
+ "updated_iso": "2026-11-25T17:51:25.407474-05:00",
  "gauge": 40,
  "zone": "Yellow",
  "contrarian": true,
@@ -278,7 +278,7 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 6.59,
+   "value": 6.58,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
