@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-25 04:02 ET",
- "updated_iso": "2026-11-25T04:02:47.726918-05:00",
+ "updated": "2026-11-25 04:17 ET",
+ "updated_iso": "2026-11-25T04:17:48.325350-05:00",
  "gauge": 40,
  "zone": "Yellow",
  "contrarian": true,
@@ -28,7 +28,7 @@
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 72.0
+   "score": 73.3
   }
  ],
  "horizon": [
@@ -222,7 +222,7 @@
    "benign": 8,
    "danger": -8,
    "score": 62.7,
-   "source": "Yahoo ^GSPC 24 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 24 Nov 16:54 ET",
    "stale": false,
    "why": "Below the 200-day = bear trend"
   },
@@ -234,7 +234,7 @@
    "benign": 0,
    "danger": -20,
    "score": 39.5,
-   "source": "Yahoo ^GSPC 24 Nov 16:00 ET",
+   "source": "Yahoo ^GSPC 24 Nov 16:54 ET",
    "stale": false,
    "why": "-10 = correction, -20 = bear market"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 6.89,
+   "value": 7.06,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 25 Nov 03:52 ET",
+   "source": "Yahoo HG=F/GC=F 25 Nov 04:07 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 27.78,
+   "value": 28.32,
    "benign": 14,
    "danger": 35,
-   "score": 65.6,
-   "source": "Yahoo ^VIX 25 Nov 03:47 ET",
+   "score": 68.2,
+   "source": "Yahoo ^VIX 25 Nov 04:02 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.091,
+   "value": 1.112,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 96.4,
-   "source": "Yahoo ^VIX/^VIX3M 25 Nov 03:47 ET",
+   "score": 100.0,
+   "source": "Yahoo ^VIX/^VIX3M 25 Nov 04:02 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
@@ -338,10 +338,10 @@
    "id": "i25",
    "pillar": "sent",
    "name": "CNN Fear & Greed (0-100)",
-   "value": 16.8,
+   "value": 16.6,
    "benign": 75,
    "danger": 5,
-   "score": 83.1,
+   "score": 83.4,
    "source": "CNN 25 Nov",
    "stale": false,
    "why": "Below 25 = extreme fear"
