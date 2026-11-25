@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-24 19:16 ET",
- "updated_iso": "2026-11-24T19:16:54.835230-05:00",
+ "updated": "2026-11-24 19:31 ET",
+ "updated_iso": "2026-11-24T19:31:55.173984-05:00",
  "gauge": 39,
  "zone": "Yellow",
  "contrarian": true,
@@ -54,7 +54,7 @@
    "benign": 1.5,
    "danger": -0.5,
    "score": 47.5,
-   "source": "FRED T10Y3M 2026-11-23",
+   "source": "FRED T10Y3M 2026-11-24",
    "stale": false,
    "why": "Inversion = recession in 6-18 months; un-inverting after an inversion is the late warning"
   },
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 8.7,
+   "value": 8.86,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 24 Nov 19:06 ET",
+   "source": "Yahoo HG=F/GC=F 24 Nov 19:21 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
