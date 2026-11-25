@@ -49,12 +49,36 @@
    "msg": "VIX above 30: now 30.5.",
    "issue": 29,
    "since": "2026-11-25 07:12 ET"
+  },
+  "ind:i10": {
+   "msg": "Junk vs Treasuries, 3-month change (%) = -3.68 (score 78/100). Junk bonds lagging Treasuries = risk-off.",
+   "issue": 30,
+   "since": "2026-11-25 09:42 ET"
+  },
+  "ind:i15": {
+   "msg": "S&P 500 vs 200-day average (%) = -4.92 (score 81/100). Below the 200-day = bear trend.",
+   "issue": 30,
+   "since": "2026-11-25 09:42 ET"
+  },
+  "ind:i21": {
+   "msg": "TSX vs 200-day average (%) = -4.32 (score 77/100). Canadian market trend.",
+   "issue": 30,
+   "since": "2026-11-25 09:42 ET"
+  },
+  "line:i17": {
+   "msg": "Nasdaq 15% below its high: now -17.73.",
+   "issue": 30,
+   "since": "2026-11-25 09:42 ET"
   }
  },
  "sent_today": {
   "ind:i17": "2026-11-25 07:12 ET",
   "ind:i22": "2026-11-25 07:12 ET",
-  "line:i22": "2026-11-25 07:12 ET"
+  "line:i22": "2026-11-25 07:12 ET",
+  "ind:i10": "2026-11-25 09:42 ET",
+  "ind:i15": "2026-11-25 09:42 ET",
+  "ind:i21": "2026-11-25 09:42 ET",
+  "line:i17": "2026-11-25 09:42 ET"
  },
  "day": "2026-11-25"
 }
