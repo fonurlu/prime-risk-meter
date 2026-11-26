@@ -34,8 +34,15 @@
    "msg": "Nasdaq drawdown from 1-yr high (%) = -14.01 (score 70/100). Health of the AI/tech leaders.",
    "issue": 29,
    "since": "2026-11-25 07:12 ET"
+  },
+  "ind:i23": {
+   "msg": "VIX / 3-month VIX = 1.025 (score 70/100). Above 1 = panic right now.",
+   "issue": 31,
+   "since": "2026-11-26 07:41 ET"
   }
  },
- "sent_today": {},
+ "sent_today": {
+  "ind:i23": "2026-11-26 07:41 ET"
+ },
  "day": "2026-11-26"
 }
