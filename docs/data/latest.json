@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-26 10:08 ET",
- "updated_iso": "2026-11-26T10:08:56.426437-05:00",
+ "updated": "2026-11-26 10:23 ET",
+ "updated_iso": "2026-11-26T10:23:55.963825-05:00",
  "gauge": 39,
  "zone": "Yellow",
  "contrarian": true,
@@ -22,13 +22,13 @@
    "key": "trend",
    "name": "Market trend & breadth",
    "weight": 25,
-   "score": 38.1
+   "score": 38.0
   },
   {
    "key": "sent",
    "name": "Volatility & sentiment",
    "weight": 20,
-   "score": 66.1
+   "score": 66.4
   }
  ],
  "horizon": [
@@ -278,11 +278,11 @@
    "id": "i20",
    "pillar": "trend",
    "name": "Copper/gold ratio, 6-month change (%)",
-   "value": 9.54,
+   "value": 9.5,
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 26 Nov 09:58 ET",
+   "source": "Yahoo HG=F/GC=F 26 Nov 10:13 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -290,11 +290,11 @@
    "id": "i21",
    "pillar": "trend",
    "name": "TSX vs 200-day average (%)",
-   "value": -1.21,
+   "value": -1.11,
    "benign": 8,
    "danger": -8,
-   "score": 57.6,
-   "source": "Yahoo ^GSPTSE 26 Nov 10:08 ET",
+   "score": 56.9,
+   "source": "Yahoo ^GSPTSE 26 Nov 10:23 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
@@ -302,11 +302,11 @@
    "id": "i22",
    "pillar": "sent",
    "name": "VIX",
-   "value": 26.85,
+   "value": 26.91,
    "benign": 14,
    "danger": 35,
-   "score": 61.2,
-   "source": "Yahoo ^VIX 26 Nov 09:53 ET",
+   "score": 61.5,
+   "source": "Yahoo ^VIX 26 Nov 10:08 ET",
    "stale": false,
    "why": "Wall Street fear gauge"
   },
@@ -314,11 +314,11 @@
    "id": "i23",
    "pillar": "sent",
    "name": "VIX / 3-month VIX",
-   "value": 1.021,
+   "value": 1.024,
    "benign": 0.85,
    "danger": 1.1,
-   "score": 68.4,
-   "source": "Yahoo ^VIX/^VIX3M 26 Nov 09:53 ET",
+   "score": 69.6,
+   "source": "Yahoo ^VIX/^VIX3M 26 Nov 10:08 ET",
    "stale": false,
    "why": "Above 1 = panic right now"
   },
