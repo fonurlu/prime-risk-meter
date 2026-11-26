@@ -25,11 +25,6 @@
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
   },
-  "ind:i23": {
-   "msg": "VIX / 3-month VIX = 1.103 (score 100/100). Above 1 = panic right now.",
-   "issue": 24,
-   "since": "2026-11-23 09:54 ET"
-  },
   "line:i23": {
    "msg": "VIX above 3-month VIX (panic): now 1.109.",
    "issue": 25,
