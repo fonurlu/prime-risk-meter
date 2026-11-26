@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-26 16:06 ET",
- "updated_iso": "2026-11-26T16:06:04.163828-05:00",
+ "updated": "2026-11-26 16:21 ET",
+ "updated_iso": "2026-11-26T16:21:03.594794-05:00",
  "gauge": 39,
  "zone": "Yellow",
  "contrarian": true,
@@ -294,7 +294,7 @@
    "benign": 8,
    "danger": -8,
    "score": 56.9,
-   "source": "Yahoo ^GSPTSE 26 Nov 16:06 ET",
+   "source": "Yahoo ^GSPTSE 26 Nov 16:20 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
