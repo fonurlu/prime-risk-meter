@@ -24,8 +24,27 @@
    "msg": "S&P 500 below its 200-day: now -2.34.",
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
+  },
+  "ind:i17": {
+   "msg": "Nasdaq drawdown from 1-yr high (%) = -14.04 (score 70/100). Health of the AI/tech leaders.",
+   "issue": 32,
+   "since": "2026-11-27 09:47 ET"
+  },
+  "ind:i23": {
+   "msg": "VIX / 3-month VIX = 1.043 (score 77/100). Above 1 = panic right now.",
+   "issue": 32,
+   "since": "2026-11-27 09:47 ET"
+  },
+  "line:i23": {
+   "msg": "VIX above 3-month VIX (panic): now 1.043.",
+   "issue": 32,
+   "since": "2026-11-27 09:47 ET"
   }
  },
- "sent_today": {},
+ "sent_today": {
+  "ind:i17": "2026-11-27 09:47 ET",
+  "ind:i23": "2026-11-27 09:47 ET",
+  "line:i23": "2026-11-27 09:47 ET"
+ },
  "day": "2026-11-27"
 }
