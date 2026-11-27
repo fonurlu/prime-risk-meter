@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-27 14:30 ET",
- "updated_iso": "2026-11-27T14:30:03.006697-05:00",
+ "updated": "2026-11-27 14:45 ET",
+ "updated_iso": "2026-11-27T14:45:02.386097-05:00",
  "gauge": 36,
  "zone": "Yellow",
  "contrarian": true,
@@ -16,13 +16,13 @@
    "key": "credit",
    "name": "Credit & liquidity",
    "weight": 25,
-   "score": 27.8
+   "score": 28.2
   },
   {
    "key": "trend",
    "name": "Market trend & breadth",
    "weight": 25,
-   "score": 32.0
+   "score": 31.9
   },
   {
    "key": "sent",
@@ -42,7 +42,7 @@
   },
   {
    "name": "Recession within 12 months",
-   "score": 29
+   "score": 30
   }
  ],
  "indicators": [
@@ -146,11 +146,11 @@
    "id": "i09",
    "pillar": "credit",
    "name": "High-yield credit spread (%)",
-   "value": 3.72,
+   "value": 3.77,
    "benign": 3.0,
    "danger": 6.0,
-   "score": 24.0,
-   "source": "FRED BAMLH0A0HYM2 2026-11-24",
+   "score": 25.7,
+   "source": "FRED BAMLH0A0HYM2 2026-11-26",
    "stale": false,
    "why": "Credit stress usually leads equity bear markets"
   },
@@ -170,11 +170,11 @@
    "id": "i11",
    "pillar": "credit",
    "name": "Investment-grade spread (%)",
-   "value": 0.98,
+   "value": 0.99,
    "benign": 0.8,
    "danger": 2.0,
-   "score": 15.0,
-   "source": "FRED BAMLC0A0CM 2026-11-24",
+   "score": 15.8,
+   "source": "FRED BAMLC0A0CM 2026-11-26",
    "stale": false,
    "why": "Corporate funding stress"
   },
@@ -198,7 +198,7 @@
    "benign": 80,
    "danger": 140,
    "score": 25.5,
-   "source": "Yahoo ^MOVE 27 Nov 14:02 ET",
+   "source": "Yahoo ^MOVE 27 Nov 14:17 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
@@ -282,7 +282,7 @@
    "benign": 5,
    "danger": -15,
    "score": 0.0,
-   "source": "Yahoo HG=F/GC=F 27 Nov 14:19 ET",
+   "source": "Yahoo HG=F/GC=F 27 Nov 14:34 ET",
    "stale": false,
    "why": "Falling = growth scare"
   },
@@ -290,11 +290,11 @@
    "id": "i21",
    "pillar": "trend",
    "name": "TSX vs 200-day average (%)",
-   "value": 0.09,
+   "value": 0.14,
    "benign": 8,
    "danger": -8,
-   "score": 49.4,
-   "source": "Yahoo ^GSPTSE 27 Nov 14:30 ET",
+   "score": 49.1,
+   "source": "Yahoo ^GSPTSE 27 Nov 14:45 ET",
    "stale": false,
    "why": "Canadian market trend"
   },
