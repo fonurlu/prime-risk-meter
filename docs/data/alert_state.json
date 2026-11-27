@@ -25,11 +25,6 @@
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
   },
-  "line:i23": {
-   "msg": "VIX above 3-month VIX (panic): now 1.109.",
-   "issue": 25,
-   "since": "2026-11-24 07:09 ET"
-  },
   "ind:i17": {
    "msg": "Nasdaq drawdown from 1-yr high (%) = -14.01 (score 70/100). Health of the AI/tech leaders.",
    "issue": 29,
