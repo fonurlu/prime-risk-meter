@@ -24,11 +24,6 @@
    "msg": "S&P 500 below its 200-day: now -2.34.",
    "issue": 16,
    "since": "2026-11-20 07:09 ET"
-  },
-  "line:i23": {
-   "msg": "VIX above 3-month VIX (panic): now 1.043.",
-   "issue": 32,
-   "since": "2026-11-27 09:47 ET"
   }
  },
  "sent_today": {
