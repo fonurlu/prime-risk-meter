@@ -1,7 +1,7 @@
 {
  "fetch_errors": {},
- "updated": "2026-11-28 03:15 ET",
- "updated_iso": "2026-11-28T03:15:35.834737-05:00",
+ "updated": "2026-11-28 03:30 ET",
+ "updated_iso": "2026-11-28T03:30:35.384284-05:00",
  "gauge": 36,
  "zone": "Yellow",
  "contrarian": true,
@@ -198,7 +198,7 @@
    "benign": 80,
    "danger": 140,
    "score": 25.5,
-   "source": "Yahoo ^MOVE 27 Nov 16:00 ET",
+   "source": "Yahoo ^MOVE 27 Nov 14:17 ET",
    "stale": false,
    "why": "Bond-market fear"
   },
